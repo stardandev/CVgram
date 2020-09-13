@@ -1,0 +1,46 @@
+<div class="resum-view">
+  <div class="resume-heading cursor-pointer" (click)="addJobLog()">
+    <h3>
+      {{'global.createNew' | translate}} {{'dashboard.jobSearch' | translate}}
+      <span>
+        <i class="fas fa-plus-circle"></i>
+      </span>
+    </h3>
+  </div>
+
+
+  <div class="table-wrap">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>{{'global.name' | translate}}</th>
+          <th>{{'global.creationDate' | translate}}</th>
+          <th>{{'global.lastUsed' | translate}}</th>
+          <th>Description</th>
+          <!-- <th>{{'global.description' | translate}}</th> -->
+          <!-- <th>{{'global.default' | translate}}</th> -->
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let job of jobSearchList;let i = index">
+          <td  class="cursor-pointer" (click)="openJob(job)"> {{job.name}} </td>
+          <td> {{job.startedAt | date}} </td>
+          <td> {{job.endedAt | date}} </td>
+          <td> {{job.description}} </td>
+          <td>
+            <span class="cursor-pointer" (click)="openJob(job)">
+              <i class="fas fa-pencil-alt"></i>
+            </span>
+            <span class="cursor-pointer" class="btn btn-default" mwlConfirmationPopover [popoverTitle]="'Warning'"
+              [popoverMessage]="'Are you sure you want to delete this CV ?'" placement="top"
+              (confirm)="deleteJob(job,i)">
+              <i class="fas fa-trash"></i>
+            </span>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

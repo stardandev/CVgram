@@ -1,0 +1,213 @@
+<div class="bot-btn">
+  <a class="btn btn-cv" (click)="saveCoverLetter()">
+    {{ coverLetterData.id ? "Update" : "Save" }}
+  </a>
+  <a class="btn btn-cv">
+    Share
+  </a>
+  <a class="btn btn-cv" (click)="download()">
+    Download
+  </a>
+</div>
+<div class="display-box email-display-box">
+  <div class="dis-box page-a4" id="box">
+    <div class="top-cv ">
+      <div class="cv-co-letter" [ngClass]="{
+        'font-lora': coverLetterTemplate.content.fontFamily == 'lora',
+        'font-Quicksand': coverLetterTemplate.content.fontFamily == 'Quicksand',
+        'font-Comfortaa': coverLetterTemplate.content.fontFamily == 'Comfortaa',
+        'font-Parisienne': coverLetterTemplate.content.fontFamily == 'Parisienne',
+        'font-Caveat': coverLetterTemplate.content.fontFamily == 'Caveat',
+        'font-Cormorant': coverLetterTemplate.content.fontFamily == 'Cormorant',
+        'font-Patrick': coverLetterTemplate.content.fontFamily == 'Patrick',
+        'font-Gabriela': coverLetterTemplate.content.fontFamily == 'Gabriela',
+        'font-IBM': coverLetterTemplate.content.fontFamily == 'IBM',
+        'font-Ubuntu': coverLetterTemplate.content.fontFamily == 'Ubuntu',
+        'font-Merriweather': coverLetterTemplate.content.fontFamily == 'Merriweather',
+        'font-Source': coverLetterTemplate.content.fontFamily == 'Source',
+        'font-Rhodium': coverLetterTemplate.content.fontFamily == 'Rhodium',
+        'font-Montserrat': coverLetterTemplate.content.fontFamily == 'Montserrat',
+        'font-Raleway': coverLetterTemplate.content.fontFamily == 'Raleway',
+        'font-Roboto': coverLetterTemplate.content.fontFamily == 'Roboto',
+        'font-Radley': coverLetterTemplate.content.fontFamily == 'Radley'
+      }"
+      [style.font-size]="coverLetterTemplate.content.fontSize + 'pt'"
+      [style.line-height]="coverLetterTemplate.content.textSpacing + 'px'"
+      [style.padding-right]="coverLetterTemplate.content.horizontalMargin + 'mm'"
+      [style.padding-left]="coverLetterTemplate.content.horizontalMargin+ 'mm'"
+      [style.padding-top]="coverLetterTemplate.content.verticalMargin + 'mm'"
+      [style.padding-bottom]="coverLetterTemplate.content.verticalMargin+ 'mm'"
+      >
+          <div class="cv-first-layout" *ngIf="coverLetterTemplate.content.layout == 1">
+            <div class="cv-top-letter ">
+              <div class="left-top">
+                <div class="cv-con">
+                  {{coverLetterData.hiringManager}}
+                </div>
+                <div class="cv-con">
+                 {{coverLetterData.companyName}}
+                </div>
+                <div class="cv-con">
+                  {{coverLetterData.companyAddress}}
+                </div>
+              </div>
+              <div class="right-top">
+                <div class="rt-top">
+                  <div class="cv-con">
+                    {{coverLetterData.applicantName}}
+                  </div>
+                  <div class="cv-con">
+                    {{coverLetterData.applicantAddress}}
+                  </div>
+                  <div class="cv-con">
+                    {{coverLetterData.applicantPhoneNumber}}
+                  </div>
+                  <div class="cv-con">
+                    {{coverLetterData.email}}
+                  </div>
+                </div>
+                <div class="rt-bot">
+                  <div class="cv-date">
+                    <span>{{coverLetterData.createdAt | date}}</span>
+                  </div>
+                </div>
+      
+              </div>
+            </div>
+          
+            <div class="cv-mid-letter">
+  
+              <span class="re-sir" *ngIf="coverLetterData.re">{{coverLetterData.re}}</span> 
+              <span class="de-sir"> {{coverLetterData.header}}</span>
+              <br>
+              <p class="cover-con">
+                {{coverLetterData.body}}
+              </p>
+            </div>
+            <div class="cv-best"  *ngIf="coverLetterData.footer">
+              <span>
+               
+              </span>
+            </div>
+            
+            <div class="cv-bot-letter">
+              <span>
+                {{coverLetterData.footer}}
+              </span>
+            </div>
+          </div> 
+
+          <div class="cv-second-layout" *ngIf="coverLetterTemplate.content.layout == 2">
+            <div class="cv-top-letter ">
+              <div class="left-top">
+                <div class="cv-con">
+                  {{coverLetterData.hiringManager}}
+                </div>
+                <div class="cv-con">
+                  {{coverLetterData.companyName}}
+                </div>
+                <div class="cv-con">
+                  {{coverLetterData.companyAddress}}
+                </div>
+              </div>
+              <div class="right-top">
+                <div class="rt-top">
+                  <div class="cv-con">
+                    {{coverLetterData.applicantName}}
+                  </div>
+                 
+                  <div class="cv-con">
+                    <span>{{coverLetterData.applicantPhoneNumber}}</span><ng-container *ngIf="coverLetterData.applicantPhoneNumber && coverLetterData.email">-</ng-container><span>{{coverLetterData.email}}</span>
+                  </div>
+                
+                </div>
+                <div class="rt-bot">
+                  <div class="cv-date">
+                    <span>{{coverLetterData.createdAt | date}}</span>
+                  </div>
+                </div>
+      
+              </div>
+            </div>
+          
+            <div class="cv-mid-letter">
+  
+              <span class="re-sir" *ngIf="coverLetterData.re">{{coverLetterData.re}}</span> 
+              <span class="de-sir"> {{coverLetterData.header}}</span>
+              <br>
+              <p class="cover-con ">
+                {{coverLetterData.body}}
+              </p>
+            </div>
+            <div class="cv-bot-letter best"  *ngIf="coverLetterData.footer">
+              <span>
+               
+              </span>
+            </div>
+            <div class="cv-bot-letter">
+              <span>
+                {{coverLetterData.footer}}
+              </span>
+            </div>
+          </div>
+
+          <div class="cv-third-layout" *ngIf="coverLetterTemplate.content.layout == 3">
+            <div class="cv-top-letter">
+              <div class="left-top">
+                <div class="cv-con">
+                  {{coverLetterData.hiringManager}}
+                </div>
+                <div class="cv-con">
+                  {{coverLetterData.companyName}}
+                </div>
+                <div class="cv-con">
+                  {{coverLetterData.companyAddress}}
+                </div>
+              </div>
+              <div class="right-top">
+                <div class="rt-top">
+                  <div class="cv-con">
+                    {{coverLetterData.applicantName}}
+                  </div>
+                  <div class="cv-con">
+                    {{coverLetterData.applicantAddress}}
+                  </div>
+                  <div class="cv-con">
+                    {{coverLetterData.applicantPhoneNumber}}
+                  </div>
+                  <div class="cv-con">
+                    {{coverLetterData.email}}
+                  </div>
+                </div>
+            
+              </div>
+            </div>
+            <div class="rt-bot">
+              <div class="cv-date">
+                <span>{{coverLetterData.createdAt | date}}</span>
+              </div>
+            </div>
+            <div class="cv-mid-letter">
+              <span class="re-sir" *ngIf="coverLetterData.re">{{coverLetterData.re}}</span>
+              <span class="de-sir"> {{coverLetterData.header}}</span>
+              <br />
+              <p class="cover-con">
+                {{coverLetterData.body}}
+              </p>
+            </div>
+
+            <div class="cv-bot-letter best" *ngIf="coverLetterData.footer">
+              <span>
+               
+              </span>
+            </div>
+            <div class="cv-bot-letter sign">
+              <span>
+                {{coverLetterData.footer}}
+              </span>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

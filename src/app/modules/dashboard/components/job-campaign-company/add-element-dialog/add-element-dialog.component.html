@@ -1,0 +1,40 @@
+<div class="dialog-padding">
+	<h2 mat-dialog-title class="dialog-title"> {{title}} </h2>
+	<mat-dialog-content [formGroup]="addElementForm">
+
+		<div class="custom-section-header-container">
+			<mat-card class="example-card">
+
+				<mat-card-header>
+					<div mat-card-avatar class="custom-section-header"></div>
+					<mat-card-title> {{title}} </mat-card-title>
+				</mat-card-header>
+
+				<mat-card-content>
+
+					<mat-form-field *ngIf="isNewElement">
+						<input type="text" formControlName="companyName" matInput placeholder="Company Name">
+					</mat-form-field>
+
+
+					<mat-form-field *ngIf="!isNewElement">
+						<textarea formControlName="eventDescription" matInput
+							placeholder="Event Description"></textarea>
+					</mat-form-field>
+
+					<mat-form-field *ngIf="!isNewElement">
+						<input type="text" formControlName="followUpAction" matInput placeholder="Follow Up Action">
+					</mat-form-field>
+
+				</mat-card-content>
+			</mat-card>
+
+		</div>
+	</mat-dialog-content>
+	<mat-dialog-actions align="end">
+		<span class="btn btn-sign btn-all cursor-pointer" (click)="closeModal()">Cancel</span>
+		<button class="btn btn-sign btn-all cursor-pointer" [disabled]="addElementForm.invalid"
+			(click)="saveCustomSection()" cdkFocusInitial>Save</button>
+	</mat-dialog-actions>
+
+</div>

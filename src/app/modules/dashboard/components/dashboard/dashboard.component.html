@@ -1,0 +1,51 @@
+<div class="inner">
+    <app-header></app-header>
+
+
+    <div class="container-fluid">
+        <div class="main-cv">
+
+            <div class="user-controls" *ngIf="showUserControls">
+                <div class="user-control-nav">
+                    <nav>
+                        <ul>
+                            <li routerLink="/dashboard/cv" routerLinkActive="active">
+                                <a>
+                                    <span> <i class="fas fa-copy"></i>{{'dashboard.resume' | translate}}</span>
+                                </a>
+                            </li>
+                            <li routerLink="/dashboard/cover-letter" routerLinkActive="active">
+                                <a>
+                                    <span><i class="fas fa-copy"></i>{{'dashboard.coverLetter' | translate}}</span>
+                                </a>
+                            </li>
+                            <li routerLink="/dashboard/email-letter" routerLinkActive="active">
+                                <a>
+                                    <span><i class="fas fa-copy"></i>{{'dashboard.emailLetter' | translate}}</span>
+                                </a>
+                            </li>
+                            <li routerLink="/dashboard/job-search-logbook" routerLinkActive="active">
+                                <a>
+                                    <span><i class="fas fa-copy"></i>{{'dashboard.jobSearch' | translate}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="user-controls" *ngIf="!showUserControls">
+                <div class="user-control-nav">
+                        <a class="link" href="javascript:void(0)" (click)="navigateToDashboard()">< {{'dashboard.backLink' | translate}}</a>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="outlet">
+                <router-outlet>
+                </router-outlet>
+            </div>
+        </div>
+    </div>
+
+</div>

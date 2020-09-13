@@ -1,0 +1,357 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/bootstrap/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+@import '../src/assets/styles/custom-styles.scss';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@syncfusion/ej2/material.css";
+@import '~ngx-toastr/toastr';
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+  }
+  
+
+body {
+    font-family: $font-primary;
+    background: $gray-4;
+	font-size: 16px;
+	line-height: 1.8;
+	font-weight: 400;
+    color: dark($black,80%);
+    outline: none;
+	&.menu-show {
+		overflow: hidden;
+		position: fixed;
+		height: 100%;
+		width: 100%;
+	}
+}
+
+a,
+a:visited,
+a:focus,
+a:active,
+a:link {
+  text-decoration: none;
+  outline: 0;
+}
+ul {
+    padding: 0;
+    list-style: none;
+  }
+
+//   img {
+//     vertical-align: middle;
+//     height: auto;
+//     width: 100%;
+//   }
+
+  //This style decides the padding of mat dialog contaner
+.mat-dialog-container {
+    padding: 0 !important;
+}
+
+::-moz-selection { /* Code for Firefox */
+    color: #fff;
+    background: $secondary;
+  }
+  
+  ::selection {
+    color: #fff;
+    background: $secondary;
+  }
+
+
+  
+::-webkit-scrollbar {
+    width: 5px;
+    height: 2px;
+    background-color: #ebebeb;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $secondary;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+
+
+#to-top {
+    display: block;
+    position: fixed;
+    text-align: center;
+    line-height: 12px!important;
+    right: 17px;
+    bottom: -30px;
+    color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -o-border-radius: 2px;
+    z-index: 9994;
+    height: 29px;
+    width: 29px;
+    background-color: rgba(0,0,0,0.25);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-color 0.1s linear;
+    -moz-transition: background-color 0.1s linear;
+    -webkit-transition: background-color 0.1s linear;
+    -o-transition: background-color 0.1s linear;
+    border-radius: 200px!important;
+    -webkit-border-radius: 200px!important;
+    -o-border-radius: 200px!important;
+    transition: box-shadow 0.3s cubic-bezier(.55,0,.1,1),background-color 0.1s linear;
+    -webkit-transition: -webkit-box-shadow 0.3s cubic-bezier(.55,0,.1,1),background-color 0.1s linear;
+    -moz-transition: -moz-box-shadow 0.3s cubic-bezier(.55,0,.1,1),background-color 0.1s linear;
+    background-color: rgba(0,0,0,0.25)!important;
+    box-shadow: none;
+    -ms-transition: opacity .45s cubic-bezier(0.25, 1, 0.33, 1), transform .45s cubic-bezier(0.25, 1, 0.33, 1), border-color .45s cubic-bezier(0.25, 1, 0.33, 1), color .45s cubic-bezier(0.25, 1, 0.33, 1), background-color .45s cubic-bezier(0.25, 1, 0.33, 1), box-shadow .45s cubic-bezier(0.25, 1, 0.33, 1);
+    -webkit-transition: opacity .45s cubic-bezier(0.25, 1, 0.33, 1), transform .45s cubic-bezier(0.25, 1, 0.33, 1), border-color .45s cubic-bezier(0.25, 1, 0.33, 1), color .45s cubic-bezier(0.25, 1, 0.33, 1), background-color .45s cubic-bezier(0.25, 1, 0.33, 1), box-shadow .45s cubic-bezier(0.25, 1, 0.33, 1);
+    transition: opacity .45s cubic-bezier(0.25, 1, 0.33, 1), transform .45s cubic-bezier(0.25, 1, 0.33, 1), border-color .45s cubic-bezier(0.25, 1, 0.33, 1), color .45s cubic-bezier(0.25, 1, 0.33, 1), background-color .45s cubic-bezier(0.25, 1, 0.33, 1), box-shadow .45s cubic-bezier(0.25, 1, 0.33, 1);
+}
+
+#to-top i {
+    line-height: 29px!important;
+    width: 29px!important;
+    height: 29px!important;
+    font-size: 14px!important;
+    top: 0px!important;
+    left: 0px!important;
+    text-align: center!important;
+    position: relative;
+    z-index: 10;
+    background-color: transparent!important;
+}
+
+i[class*="fa-"], span[class*="fa-"] {
+    display: inline-block;
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    top: -2px;
+    word-spacing: 1px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+
+#to-top:hover {
+    background-color: #167af2 !important;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+textarea {
+    resize: none !important;
+}
+
+.mat-accordion .mat-expansion-panel:last-of-type {
+border: none !important;
+}
+
+.mat-accordion .mat-expansion-panel:first-of-type {
+    border: none !important;
+}
+
+.mat-accordion .mat-expansion-panel {
+    margin: 2px;
+}
+
+.mat-expansion-panel-header[aria-disabled=true] .mat-expansion-panel-header-description, .mat-expansion-panel-header[aria-disabled=true] .mat-expansion-panel-header-title {
+    color: black;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.full_width {
+    width: 100%;
+}
+.editor-with-zero-height >
+.ql-container.ql-snow {
+    height: 30vh;
+}
+
+.ql-toolbar.ql-snow 
+.ql-formats {
+    margin: 0 !important;
+}
+.ql-toolbar.ql-snow {
+    padding: 4px !important;
+    background: #F5F5F5;
+}
+
+.ql-container.ql-snow{
+    height: auto;
+}
+
+.dialog-padding {
+    padding: 25px;
+}
+#emoji-palette{
+    top: 0px !important;
+}
+
+.mat-card {
+    border: 1px solid #cecece;
+}
+
+.mat-chip.mat-standard-chip {
+    background: rgb(245, 245, 245);
+    color: rgb(136, 136, 136);
+}
+
+
+[quill-editor-toolbar] .ql-font span[data-label="Aref Ruqaa"]::before {
+    font-family: "Aref Ruqaa";
+  }
+  
+  [quill-editor-toolbar] .ql-font span[data-label="Mirza"]::before {
+    font-family: "Mirza";
+  }
+  
+  [quill-editor-toolbar] .ql-font span[data-label="Roboto"]::before {
+    font-family: "Roboto";
+  }
+  
+  /* Set content font-families */
+  
+  .ql-font-mirza {
+    font-family: "Mirza";
+  }
+  
+  .ql-font-aref {
+    font-family: "Aref Ruqaa";
+  }
+  
+  .ql-font-roboto {
+    font-family: "Roboto";
+  }
+  th.mat-header-cell.cdk-column-language.mat-column-language {
+    padding-right: 11px;
+}
+
+.e-input-group:not(.e-float-icon-left):not(.e-float-input)::before, .e-input-group:not(.e-float-icon-left):not(.e-float-input)::after, .e-input-group.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::before, .e-input-group.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::after, .e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::before, .e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::after, .e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::before, .e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::after {
+    background: #055796;
+}
+.e-inplaceeditor .e-editable-value-wrapper:hover {
+    background: #d1e6f5;
+    border-radius: 9px;
+    text-align: center;
+
+}
+
+.e-inplaceeditor .e-editable-value-wrapper .e-editable-value {
+    display: inline-block;
+    font-size: 16.1px;
+    margin: 0 28px 0 0;
+}
+
+.e-inplaceeditor .e-editable-value-wrapper .e-editable-value {
+    border: none;
+}
+.e-italic {
+    font-style:italic;
+}
+
+.tui-image-editor-header-logo {
+    display: none !important;
+}
+
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.font-lora {
+    font-family: 'Lora', serif;
+}
+.font-Quicksand {
+    font-family: 'Quicksand', sans-serif;
+}
+.font-Comfortaa {
+    font-family: 'Comfortaa', cursive;
+}
+.font-Parisienne {
+    font-family: 'Parisienne', cursive;
+}
+.font-Caveat {
+    font-family: 'Caveat', cursive;
+}
+.font-Cormorant {
+    font-family: 'Cormorant Garamond', serif;
+}
+.font-Patrick {
+    font-family: 'Patrick Hand', cursive;
+}
+.font-Gabriela {
+    font-family: 'Gabriela', serif;
+}
+.font-IBM {
+    font-family: 'IBM Plex Mono', monospace;
+}
+.font-Ubuntu {
+    font-family: 'Ubuntu', sans-serif;
+}
+.font-Merriweather {
+    font-family: 'Merriweather', serif;
+}
+.font-Source {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.font-Rhodium {
+    font-family: 'Rhodium Libre', serif;
+}
+.font-Montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+.font-Raleway {
+    font-family: 'Raleway', sans-serif;
+}
+.font-Roboto {
+    font-family: 'Roboto', sans-serif;
+}
+.font-Radley {
+    font-family: 'Radley', serif;
+}
+
+.ql-editor {
+    word-break: break-word !important;
+    padding: 0 !important;
+}
+quill-editor ::ng-deep .ql-editor {
+    word-break: break-word !important;
+    width: 366px;
+    overflow-y: unset !important;
+}
+.ql-container {
+    font-family: inherit !important;
+}
+// .mat-expansion-panel-body {
+//     padding: 0 10px 14px !important;
+// }

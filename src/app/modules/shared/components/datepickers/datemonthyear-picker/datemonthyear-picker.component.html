@@ -1,0 +1,18 @@
+<ng-container *ngIf="controlType == 'startedAt'">
+  <mat-form-field style="width: 90%;" [formGroup]="parentFormGroup">
+    <input
+    [max]="maxDate"
+    matInput formControlName="startedAt" [matDatepicker]="normalPicker" placeholder="Start">
+    <mat-datepicker-toggle matSuffix [for]="normalPicker"></mat-datepicker-toggle>
+    <mat-datepicker #normalPicker></mat-datepicker>
+  </mat-form-field>
+</ng-container>
+<ng-container *ngIf="controlType == 'endedAt'">
+  <mat-form-field style="width: 90%;" [formGroup]="parentFormGroup">
+    <input 
+    [max]="maxDate"
+    matInput formControlName="endedAt" [matDatepicker]="normalPicker" placeholder="End">
+    <mat-datepicker-toggle matSuffix [for]="normalPicker"></mat-datepicker-toggle>
+    <mat-datepicker #normalPicker></mat-datepicker>
+  </mat-form-field>
+</ng-container>

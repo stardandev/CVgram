@@ -1,0 +1,39 @@
+<div class="dialog-padding">
+    <h2 mat-dialog-title class="dialog-title">{{formData.name}}</h2>
+      <mat-dialog-content [formGroup]="customSectionEntryForm">
+        <div>
+            <mat-card class="example-card">
+                <mat-card-header>
+                  <div mat-card-avatar class="custom-section-details-header"></div>
+                  <mat-card-title>Details</mat-card-title>
+                </mat-card-header>
+                <mat-card-content >
+                   <mat-form-field class="form-field-gap">
+                        <input formControlName="title" matInput placeholder="Title">
+                      </mat-form-field>
+                    <mat-form-field class="form-field-gap">
+                        <input  matInput formControlName="subtitle" placeholder="Subtitle">
+                      </mat-form-field>
+                    <mat-form-field class="form-field-gap">
+                        <input  matInput formControlName="city" placeholder="City">
+                      </mat-form-field>
+                    <mat-form-field class="form-field-gap">
+                        <input  matInput formControlName="country" placeholder="Country">
+                      </mat-form-field>
+                    <mat-form-field>
+                        <input  matInput formControlName="date" placeholder="Date">
+                      </mat-form-field>
+                      <quill-editor formControlName="description" class="editor-with-zero-height"
+                      placeholder="Enter Description"></quill-editor>
+                </mat-card-content>
+              </mat-card>
+              
+        </div>
+  
+      </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <span class="btn btn-sign btn-all cursor-pointer" (click)="closeModal()">Cancel</span>
+    <button class="btn btn-sign btn-all cursor-pointer" [disabled]="formData.invalid" (click)="saveCustomSectionEntry()" cdkFocusInitial>Save</button>
+  </mat-dialog-actions>
+  
+  </div>

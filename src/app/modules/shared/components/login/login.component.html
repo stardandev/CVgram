@@ -1,0 +1,77 @@
+<div>
+    <div id="signInModal" style="display: block;">
+        <div  role="document">
+            <div class="signin_modal_content">
+                <div class="p-0 signin_modal_body">
+                    <button (click)="closeModal()" type="button" class="close clsBtn" >
+                            <svg  version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            x="0px" y="0px" viewBox="0 0 612 612" xml:space="preserve">
+                            <g>
+                              <polygon points="424.032,443.7 443.7,424.032 325.667,306 443.7,187.967 424.032,168.3 306,286.333 187.967,168.3 168.3,187.967 
+                                                          286.333,306 168.3,424.032 187.967,443.7 306,325.667" />
+                              <path d="M612,306C612,137.004,474.995,0,306,0C137.004,0,0,137.004,0,306c0,168.995,137.004,306,306,306
+                                                          C474.995,612,612,474.995,612,306z M27.818,306C27.818,152.36,152.36,27.818,306,27.818S584.182,152.36,584.182,306
+                                                          S459.64,584.182,306,584.182S27.818,459.64,27.818,306z" />
+                            </g>
+                          </svg>
+                 </button>
+                    <div class="row signin_modal_row">
+                        <div class="col-lg-6 col-md-6 p-0 left_side_container">
+                            <div class="signInbg">
+                                <div class="signlayer">
+                                    <div class="logo">
+                                        <p class="shrtnote">
+                                                {{'login.shrtnote' | translate}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 right_side_container">
+                            <div class="welmsgsignup">
+                                <h2>{{'login.welcome' | translate}} <span class="priclr">CeeVee</span></h2>
+                                <p>{{'login.description' | translate}}</p>
+                            </div>
+                            <div class="formContainer">
+                                <form (ngSubmit)="onLoginSubmit()" class="signin_form" [formGroup]="userSigninForm" novalidate>
+                                    <div class="form-group">
+                                        <label for="email">{{'global.email' | translate}}<sup>*</sup></label>
+                                        <input placeholder="Email" type="text" name="email" class="form-control" id="email" formControlName="email">
+                                        <div *ngIf="userSigninForm.controls.email.invalid && (userSigninForm.controls.email.dirty || userSigninForm.controls.email.touched)" class="inputErrorBox">
+                                            <div *ngIf="userSigninForm.controls.email.errors?.required">
+                                                {{'global.requiredError' | translate}}
+                                            </div>
+                                            <div *ngIf="userSigninForm.controls.email.errors?.pattern">
+                                                {{'global.validEmailError' | translate}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password"> {{'global.password' | translate}} <sup>*</sup></label>
+                                        <input placeholder="Password" type="password" name="password" class="form-control" id="password" formControlName="password">
+                                        <div *ngIf="userSigninForm.controls.password.invalid && (userSigninForm.controls.password.dirty || userSigninForm.controls.password.touched)" class="inputErrorBox">
+                                            <div *ngIf="userSigninForm.controls.password.errors?.required">
+                                                {{'global.requiredError' | translate}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-check text-right mb-2">
+                                        <a class="forgotpass cursor-pointer" (click)="navigateTOForgotPassword()">{{'global.forgotPassword'  | translate}}</a>
+                                    </div>
+
+                                    <p class="mt-3">{{'login.dontHaveAccount' | translate}} {{'global.please' | translate}} <a  class="signupLink cursor-pointer" (click)="navigateToSignup()">{{'global.SignUp' | translate}}</a>.</p>
+
+                                    <button [disabled]="!userSigninForm.valid  || showLoader" class="btn btnbuyNow_lg signInBtn">
+                                     {{'global.SignIn' | translate}}
+                                     <span *ngIf="showLoader"><img class="submit-loader"
+                                        src="../../../../../assets/loading.gif"></span>
+                                  </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

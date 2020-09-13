@@ -1,0 +1,190 @@
+{
+    "header" : {
+        "Menu" : "Menu",
+        "Home" : "Accueil",
+        "AboutUs" : "À propos de nous",
+        "SignIn" : "Se connecter",
+        "SignUp" : "S'inscrire",
+        "LogOut": "SE DÉCONNECTER",
+        "login": "s'identifier"
+    },
+    "landing" : {
+        "intro" : {
+            "title" : "Le générateur de CV en ligne que vous méritez",
+            "caption" : "Cv / Reprendre",
+            "description" : "Créer un CV professionnel et une lettre de motivation n'a jamais été aussi simple"
+        },
+        "section1": {
+            "title" : "Voyez comment nous améliorons vos chances d'être embauché!",
+            "description" : "Faire un CV est la première étape de toute recherche d'emploi. Vous ne savez pas comment faire un CV? Notre constructeur de CV en ligne vous donne des modèles de CV gratuits à suivre."
+        },
+        "section2" : {
+            "title" : "Avantages d'utiliser un générateur de CV",
+            "details1" : {
+                "title" : "Une présentation de CV qui se démarque",
+                "description" : "Une mise en page créative et professionnelle peut attirer l'attention d'un recruteur. Notre optimiseur de mise en page de CV s'assure que tout votre contenu est aligné et organisé afin que votre CV ressemble à une œuvre d'art."
+            },
+            "details2" : {
+                "title" : "Commentaires en direct pour améliorer votre contenu",
+                "description" : "Si vous ne savez pas comment rédiger un CV, ne vous inquiétez pas. Notre optimiseur de contenu analyse votre CV et vous propose des révisions suggérées pour augmenter la qualité de votre contenu."
+            },
+            "details3" : {
+                "title" : "Des modèles adaptés à vos besoins exacts",
+                "description" : "Laissez nos modèles de CV gratuits et nos modèles de lettres de motivation faire le travail pour vous. Choisissez parmi une sélection de schémas de configuration approuvés par les recruteurs pour différents types de travaux."
+            },
+            "details4" : {
+                "title" : "Lettre de motivation et échantillons de CV gratuits",
+                "description" : "Non seulement vous pouvez créer votre CV gratuitement, mais vous avez également accès à des exemples de CV réussis et à des exemples de lettres de motivation que vous pouvez utiliser pour vous guider."
+            },
+            "howItWorks" : {
+                "title" : "Comment ça fonctionne",
+                "section1" : {
+                    "title" : "Inscrivez-vous en un éclair",
+                    "description" :"Cela ne prend que quelques secondes pour commencer à utiliser notre outil de création de CV en ligne. Le créateur de CV est proposé entièrement sur notre site Web, ce qui signifie qu'il n'y a pas de logiciel à télécharger."
+                },
+                "section2" : {
+                    "title" : "Choisissez une mise en page de CV",
+                    "description" :"Vous avez le choix entre plusieurs options de conception avec notre sélection de modèles de CV gratuits. Cela vous aide à faire correspondre votre CV au type d'entreprise et au poste que vous souhaitez."
+                },
+                "section3" : {
+                    "title" : "Développez et optimisez votre contenu",
+                    "description" :"Chaque modèle de CV est organisé en sections de contenu principales que vous remplissez tandis que les outils d'optimisation vous guident tout au long du processus. Et ajouter ou supprimer une section spécifique en fonction de vos besoins ne pose aucun problème et vous obtenez des suggestions de mise en page et de contenu pour que votre CV soit parfait."
+                },
+                "section4" : {
+                    "title" : "Exporter et envoyer",
+                    "description" :"Une fois votre contenu terminé, vous pouvez exporter votre CV en PDF à partir du générateur de CV gratuit. Votre dernière version est enregistrée et vous pouvez toujours revenir en arrière pour apporter des modifications."
+                }
+            }
+        }
+    },
+    "footer" : {
+        "Home" : "Accueil",
+        "resumeTemplates" : "Modèles de CV",
+        "contactUs" : "Nous contacter",
+        "details" : {
+            "heading" : "Notre vision est de",
+            "subheading" : "Lutter contre le chômage",
+            "employerName" : "Nom de la compagnie",
+            "companyAddress" : "Rue de l'entreprise, ville",
+            "copyrighttitle" : "droits d'auteur",
+            "copyrightdesc" : "Tous les droits sont réservés"
+        }
+    },
+    "buttons" : {
+        "getStarted": "Commencer",
+        "getTemplate" : "Obtenez un modèle de CV"
+    },
+    "login" : {
+        "shrtnote" : "Inscrivez-vous ou connectez-vous ici et commencez à créer votre CV dès aujourd'hui.",
+        "welcome" : "Bienvenue à",
+        "description" : "Connectez-vous à un compte d'utilisateur existant ou inscrivez-vous.",
+        "dontHaveAccount" : "Vous n'avez pas encore de compte?"
+    },
+    "global" : {
+        "email" : "Email",
+        "requiredError" : "Ce champ est requis",
+        "validEmailError" : "Il doit s'agir d'une adresse e-mail valide",
+        "password" : "Mot de passe",
+        "forgotPassword" : "Mot de passe oublié?",
+        "SignIn" : "Se connecter",
+        "SignUp" : "S'inscrire",
+        "please" : "S'il vous plaît",
+        "firstName" : "Prénom",
+        "lastName" : "Nom de famille",
+        "mobileNumber" : "Numéro de portable",
+        "confirmPassword" : "Confirmez le mot de passe",
+        "selectTemplate" : "Sélectionnez ce modèle",
+        "passwordNotMatching" : "Le mot de passe ne correspond pas",
+        "createNew" : "Créer un nouveau",
+        "creationDate" : "Date de création",
+        "lastUsed" : "Dernière utilisation",
+        "name" : "Nom",
+        "description" : "La description",
+        "default" : "Défaut",
+        "submit": "Soumettre",
+        "clicktoadd": "Cliquer pour ajouter",
+        "toggleDatePicker" : "Ajouter le jour du mois",
+        "present": "Présent",
+        "showDetails" : "Afficher les niveaux sur CV?",
+        "showSkillLevel" : "Afficher le niveau de compétence",
+        "continue" : "Continuer"
+    },
+    "signUp" : {
+        "shrtnote" : "Inscrivez-vous ou connectez-vous ici et commencez à créer votre CV dès aujourd'hui.",
+        "welcome" : "Bienvenue à",
+        "description" : "Entrez votre email pour commencer",
+        "haveAnAccount" : "Vous avez déjà un compte?"
+    },
+    "registration" : {
+        "shrtnote": "Vous êtes à un pas de terminer votre inscription.",
+        "welcome" : "Bienvenue à",
+        "description" : "Veuillez remplir les détails ci-dessous et soumettre"
+    },
+    "dashboard" : {
+        "resume" : "reprendre",
+        "coverLetter" : "Lettre de motivation",
+        "emailLetter" : "Courriel",
+        "jobSearch" : "Journal de recherche d'emploi",
+        "backLink" : "Retour au tableau de bord"
+    },
+    "forgotPassword": {
+        "description": "Entrez votre email, nous vous enverrons un lien pour réinitialiser votre mot de passe",
+        "title": "Mot de passe oublié",
+        "chooseNewPassword" : "Choisissez un nouveau mot de passe",
+        "enterNewPassword" : "Entrez votre nouveau mot de passe"
+    },
+    "resumeOperations" : {
+        "profileCompleteness" : "Complétude du profil",
+        "personalDetails" : "Détails personnels",
+        "profile" : "Profil",
+        "professionalExperience": "Expérience professionnelle",
+        "education": "Éducation",
+        "languages" : "Langages",
+        "skills": "Compétences",
+        "addCustomSection" : "Ajouter une section personnalisée",
+        "addPhoto": "Ajouter une photo",
+        "deletePhoto" : "Supprimer la photo"
+    },
+    "resumeDesign" : {
+        "pageLayout" :  {
+            "title" : "Mise en page",
+            "headerLayout" : "Disposition des en-têtes",
+            "picture" : "Image",
+            "column" : "Colonne",
+            "singleColumn" : "Seule colonne",
+            "doubleColumn": "Double colonne",
+            "pageFormat" : "Format de page",
+            "dateFormat" : "Format de date",
+            "year" : "Année",
+            "month" : "Mois",
+            "separator": "Séparateur",
+            "displayIcons" : "Icônes d'affichage",
+            "short" : "Court",
+            "Long" : "Long",
+            "sectionOrder" : "Ordonnance de section",
+            "saveFormat" : "Enregistrer le format en tant que nouveau modèle"
+        },
+        "designTemplate": {
+            "title" : "Modèle de conception"
+        },
+        "formatting" : {
+            "title" : "Mise en page",
+            "headerColor" : "Couleur d'en-tête",
+            "headerFontSize": "En-tête Taille de police",
+            "titleFontSize" : "Titre Taille de police",
+            "bodyFontSize" : "Taille de la police du corps",
+            "borderWidth" : "Largeur de la bordure",
+            "textSpacing" : "Espacement du texte",
+            "sectionSpacing" : "Espacement des sections",
+            "horizontalMargin" : "Marge horizontale",
+            "verticalMargin" : "Marge verticale",
+            "sectionLine" : "Ligne de coupe",
+            "sectionLineWidth" : "Largeur de ligne de coupe",
+            "body" : "Corps",
+            "background" : "Contexte",
+            "font" : "Police de caractère",
+            "fontfamily" : "Famille de polices",
+            "saveFormat" : "Enregistrer le format en tant que nouveau modèle"
+        }   
+    }
+}

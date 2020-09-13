@@ -1,0 +1,166 @@
+<div class="email-opreation">
+    <div class="email-section">
+      <div class="row">
+        <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+          <div class="email-left-box">
+            <div class="row">
+              <div class="col-12">
+                <div class="input-cv">
+                  <div class="left-input">
+                  </div>
+                  <div  class="btn-container">
+                    <a class="btn btn-cv btn-wide" (click)="navigateToContentModule()">
+                       Content
+                      </a>
+                  </div>
+                </div>
+              </div>
+              <br />
+
+              <div class="col-12">
+                <div class="row d-flex justify-content-center d-flex align-items-center">
+
+                  <div class="col-3">
+                    <h6 class="co-title">
+                      Font :
+                    </h6>
+                  </div>
+                  <div class="col-4">
+                    <div class="select">
+                      <mat-form-field style="width: 98%;">
+                        <mat-label>Choose Font</mat-label>
+                        <mat-select (selectionChange)="updateCoverDesign()" [(ngModel)]="coverLetterDesignBonds.fontFamily">
+                            <mat-option class="font-Lora" value="Lora">Lora</mat-option>
+                            <mat-option class="font-Quicksand" value="Quicksand">Quicksand</mat-option>
+                            <mat-option class="font-Comfortaa" value="Comfortaa">Comfortaa</mat-option>
+                            <mat-option class="font-Parisienne" value="Parisienne">Parisienne</mat-option>
+                            <mat-option class="font-Caveat" value="Caveat">Caveat</mat-option>
+                            <mat-option class="font-Cormorant" value="Cormorant">Cormorant Garamond</mat-option>
+                            <mat-option class="font-Patrick" value="Patrick">Patrick Hand</mat-option>
+                            <mat-option class="font-Gabriela" value="Gabriela">Gabriela</mat-option>
+                            <mat-option class="font-IBM" value="IBM">IBM Plex Mono</mat-option>
+                            <mat-option class="font-Ubuntu" value="Ubuntu">Ubuntu</mat-option>
+                            <mat-option class="font-Merriweather" value="Merriweather">Merriweather</mat-option>
+                            <mat-option class="font-Source" value="Source">Source Sans Pro</mat-option>
+                            <mat-option class="font-Rhodium" value="Rhodium">Rhodium Libre</mat-option>
+                            <mat-option class="font-Montserrat" value="Montserrat">Montserrat</mat-option>
+                            <mat-option class="font-Raleway" value="Raleway">Raleway</mat-option>
+                            <mat-option class="font-Roboto" value="Roboto">Roboto</mat-option>
+                            <mat-option class="font-Radley" value="Radley">Radley</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="select">
+                      <mat-form-field style="width: 98%;">
+                        <mat-label>Font Size</mat-label>
+                        <input [(ngModel)]="coverLetterDesignBonds.fontSize" (change)="updateCoverDesign()" (input)="updateCoverDesign()" type="number" matInput name="value" placeholder="Font Size">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-1"></div>
+                </div>
+              </div>
+
+              <br>
+              <div class="col-12">
+                <div class="row d-flex justify-content-center d-flex align-items-center">
+
+                  <div class="col-4">
+                    <h6 class="co-title">
+                      Text Spacing :
+                    </h6>
+                  </div>
+                  <div class="col-4">
+                    <div class="select">
+                      <mat-form-field style="width: 98%;">
+                        <mat-label>Text Spacing</mat-label>
+                        <input min="10" [(ngModel)]="coverLetterDesignBonds.textSpacing" (change)="updateCoverDesign()" (input)="updateCoverDesign()" type="number" matInput name="value" placeholder="Text Spacing">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-3"></div>
+                  <div class="col-1"></div>
+                </div>
+              </div>
+
+              <br>
+              <div class="col-12">
+                <div class="row d-flex justify-content-center d-flex align-items-center">
+
+                  <div class="col-6">
+                    <h6 class="co-title">
+                      Horizontal Margin :
+                    </h6>
+                  </div>
+                  <div class="col-4">
+                    <div class="select slider-container">
+                      <mat-slider color="primary" [min]=0 [max]=25
+                      [(ngModel)]="coverLetterDesignBonds.horizontalMargin" (change)="updateCoverDesign()">
+                    </mat-slider>
+                    <span>{{coverLetterDesignBonds.horizontalMargin}}mm</span>
+                    </div>
+                  </div>
+                  <div class="col-2"></div>
+                </div>
+              </div>
+
+              <br>
+              <div class="col-12">
+                <div class="row d-flex justify-content-center d-flex align-items-center">
+
+                  <div class="col-6">
+                    <h6 class="co-title">
+                      Verticle Margin :
+                    </h6>
+                  </div>
+                  <div class="col-4">
+                    <div class="select  slider-container">
+                      <mat-slider color="primary" [min]=0 [max]=25
+                      [(ngModel)]="coverLetterDesignBonds.verticalMargin" (change)="updateCoverDesign()">
+                    </mat-slider>
+                    <span>{{coverLetterDesignBonds.verticalMargin}}mm</span>
+                    </div>
+                  </div>
+                  <div class="col-2"></div>
+                </div>
+              </div>
+
+              <div class="col-12">
+               
+                  <h6 class="co-title">
+                    Layout :
+                  </h6>
+              
+                  <br>
+                <div class="row">
+                  <div class="col-4 cursor-pointer" (click)="updateLayout(1)">
+                    <div class="first-box" [ngClass]="{'active': coverLetterDesignBonds.layout == 1}">
+                     <img src="../../../../../assets/cover/method-draw-image (2).svg" alt="">
+                    </div>
+                  </div>
+                  <div class="col-4 cursor-pointer" (click)="updateLayout(2)">
+                    <div class="first-box" [ngClass]="{'active': coverLetterDesignBonds.layout == 2}">
+                      <img src="../../../../../assets/cover/method-draw-image (3).svg" alt="">
+                     </div>
+                  </div>
+                  <div class="col-4 cursor-pointer" (click)="updateLayout(3)">
+                    <div class="first-box" [ngClass]="{'active': coverLetterDesignBonds.layout == 3}">
+                      <img src="../../../../../assets/cover/method-draw-image (4).svg" alt="">
+                     </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+            <app-cover-letter-overview></app-cover-letter-overview>
+        </div>
+      </div>
+    </div>
+  </div>
+  

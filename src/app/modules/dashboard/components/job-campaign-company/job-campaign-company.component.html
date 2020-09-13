@@ -1,0 +1,56 @@
+<ng-container>
+	<div class="example-container">
+		<h5>Interested</h5>
+		<div cdkDropList #interest="cdkDropList" [cdkDropListData]="interestList"
+			[cdkDropListConnectedTo]="[contact_Taken,interview,finalize]" class="example-list"
+			(cdkDropListDropped)="drop($event,'interested')">
+			<div class="example-box" *ngFor="let item of interestList" cdkDrag>
+				<u (click)="openLeadAction(item)">{{item.name}}</u>
+				<span cdkDragHandle><img src="../../../../../assets/resume/drag.svg" class="drag-icon"></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="example-container">
+		<h5>Contact Taken</h5>
+
+		<div cdkDropList #contact_Taken="cdkDropList" [cdkDropListData]="contactTaKenList"
+			[cdkDropListConnectedTo]="[interest,interview,finalize]" class="example-list"
+			(cdkDropListDropped)="drop($event,'contact taken')">
+			<div class="example-box" *ngFor="let item of contactTaKenList" cdkDrag>
+				<u (click)="openLeadAction(item)"> {{item.name}}</u>
+				<span cdkDragHandle><img src="../../../../../assets/resume/drag.svg" class="drag-icon"></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="example-container">
+		<h5>Interview Process</h5>
+
+		<div cdkDropList #interview="cdkDropList" [cdkDropListData]="interviewList"
+			[cdkDropListConnectedTo]="[interest,contact_Taken,finalize]" class="example-list"
+			(cdkDropListDropped)="drop($event,'interview process')">
+			<div class="example-box" *ngFor="let item of interviewList" cdkDrag>
+				<u (click)="openLeadAction(item)">{{item.name}}</u>
+				<span cdkDragHandle><img src="../../../../../assets/resume/drag.svg" class="drag-icon"></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="example-container">
+		<h5>Finalizing</h5>
+
+		<div cdkDropList #finalize="cdkDropList" [cdkDropListData]="finalizeList"
+			[cdkDropListConnectedTo]="[interest,contact_Taken,interview]" class="example-list"
+			(cdkDropListDropped)="drop($event,'finalizing')">
+			<div class="example-box" *ngFor="let item of finalizeList" cdkDrag>
+				<u (click)="openLeadAction(item)"> {{item.name}}</u>
+				<span cdkDragHandle><img src="../../../../../assets/resume/drag.svg" class="drag-icon"></span>
+			</div>
+		</div>
+	</div>
+
+</ng-container>
+<div class="example-button-row">
+	<button mat-stroked-button (click)="addNewElementDialog(true)">Add New Prospect</button>
+</div>

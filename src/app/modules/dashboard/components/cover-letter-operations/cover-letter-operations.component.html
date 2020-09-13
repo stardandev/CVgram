@@ -1,0 +1,153 @@
+<div class="email-opreation">
+  <div class="email-section">
+    <!-- <div class="heading-email">
+      <h4>
+        Cover Letter Operation
+      </h4>
+    </div> -->
+    <div class="row">
+      <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+        <div class="email-left-box" >
+          <div class="row">
+            <div class="col-12">
+              <div class="input-cv">
+                <div class="left-input">
+                  
+                  <mat-form-field appearance="outline">
+                    <mat-label>Document Name</mat-label>
+                    <input matInput (input)="updateCoverLetterData()"  [(ngModel)]="coverLetterData.name">
+                  </mat-form-field>
+                </div>
+                <div  class="btn-container">
+                  <a class="btn btn-cv btn-wide" (click)="navigateToDesignModule()">
+                     Design
+                    </a>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="col-12">
+              <div class="row">
+                <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
+                  <div class="input-cv">
+                    <mat-form-field class="form-s">
+                      <input matInput (input)="updateCoverLetterData()" (dateChange)="updateCoverLetterData()" [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="coverLetterData.createdAt">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="col-12 marign-cv">
+              <div class="row">
+                <div class="col-6">
+                  <div class="left-sec">
+                    <div class="left-input">
+                  
+                      <mat-form-field appearance="outline">
+                        <mat-label>Hiring Manager</mat-label>
+                        <input matInput (input)="updateCoverLetterData()"  [(ngModel)]="coverLetterData.hiringManager">
+                      </mat-form-field>
+                    </div>
+                    <br>
+                    <div class="left-input">
+                  
+                      <mat-form-field appearance="outline">
+                        <mat-label>Company Name</mat-label>
+                        <input matInput (input)="updateCoverLetterData()"  [(ngModel)]="coverLetterData.companyName">
+                      </mat-form-field>
+                    </div>
+                    <br>
+                    <div class="left-input">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Address</mat-label>
+                      <textarea matInput (input)="updateCoverLetterData()"  [(ngModel)]="coverLetterData.companyAddress"></textarea>
+                    </mat-form-field>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="right-sec">
+                    <div class="left-input">
+                  
+                      <mat-form-field appearance="outline">
+                        <mat-label>My Name</mat-label>
+                        <input matInput (input)="updateCoverLetterData()" [(ngModel)]="coverLetterData.applicantName">
+                      </mat-form-field>
+                    </div>
+                    <br>
+                    <div class="left-input">
+                    <mat-form-field appearance="outline">
+      
+                      <mat-label>My Address</mat-label>
+                      <textarea matInput (input)="updateCoverLetterData()" [(ngModel)]="coverLetterData.applicantAddress"></textarea>
+                    </mat-form-field>
+                    </div>
+                    <br>
+                    <div class="left-input">
+                      <mat-form-field appearance="outline">
+                        <mat-label>My Phone Number</mat-label>
+                        <input matInput (input)="updateCoverLetterData()" [(ngModel)]="coverLetterData.applicantPhoneNumber">
+                      </mat-form-field>
+                    </div>
+                    
+                    <div class="left-input">
+                  
+                      <mat-form-field appearance="outline">
+                        <mat-label>My Email Address</mat-label>
+                        <input matInput (input)="updateCoverLetterData()" [(ngModel)]="coverLetterData.email">
+                      </mat-form-field>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br />  
+            <div class="col-12">
+              <div class="main-input">
+                  
+                <mat-form-field appearance="outline" style="width: 100%;">
+                  <mat-label>Re...</mat-label>
+                  <input matInput (input)="updateCoverLetterData()"  [(ngModel)]="coverLetterData.re">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="main-input">
+                  
+                <mat-form-field appearance="outline" style="width: 100%;">
+                  <mat-label>Dear Sir</mat-label>
+                  <input matInput (input)="updateCoverLetterData()"  [(ngModel)]="coverLetterData.header">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="text-box">
+               <textarea (input)="updateCoverLetterData()" maxlength="2290" name="" id="" cols="30" rows="10" style="width: 100%;"  [(ngModel)]="coverLetterData.body"></textarea>
+                </div>
+            </div>
+            <br>
+            <div class="col-12">
+              <div class="main-input">
+                  
+                <mat-form-field appearance="outline" style="width: 100%;">
+                  <mat-label>Best regards</mat-label>
+                  <input matInput (input)="updateCoverLetterData()" [(ngModel)]="coverLetterData.footer">
+                </mat-form-field>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+          <app-cover-letter-overview></app-cover-letter-overview>
+      </div>
+    </div>
+  </div>
+</div>

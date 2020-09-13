@@ -1,0 +1,745 @@
+<div class="design-template">
+  <div class="row">
+    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+      <div class="row btn-container">
+        <a class="btn btn-cv" (click)="navigateToContentModule()">
+          Content Page
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="dt">
+    <div class="row">
+      <div class="col-md-4">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Page layout
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="col-md-12 pat">
+              <div class="header-layoout">
+                <div class="left-heading">
+                  <h6>Header layout</h6>
+                </div>
+                <div class="right-side">
+                  <div class="boxes">
+                    <div class="box-1" (click)="updateResumePageBounds('headerLayout', 1)"
+                      [ngClass]="{'box-active': resumePageBounds?.headerLayout == 1}">
+                      <div class="inner ">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 92 26">
+                          <path
+                            d="M92 13c0 7.18-5.82 13-13 13s-13-5.82-13-13S71.82 0 79 0s13 5.82 13 13zM56 2H2a2 2 0 00-2 2v5a2 2 0 002 2h54a2 2 0 002-2V4a2 2 0 00-2-2zm0 13H2a2 2 0 00-2 2v5a2 2 0 002 2h54a2 2 0 002-2v-5a2 2 0 00-2-2z">
+                          </path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="box-1" (click)="updateResumePageBounds('headerLayout', 2)"
+                      [ngClass]="{'box-active': resumePageBounds?.headerLayout == 2}">
+                      <div class="inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 92 56">
+                          <path
+                            d="M88.828 34H3.172C1.42 34 0 34.895 0 36v5c0 1.105 1.42 2 3.172 2h85.656C90.58 43 92 42.105 92 41v-5c0-1.105-1.42-2-3.172-2zm0 13H3.172C1.42 47 0 47.895 0 49v5c0 1.105 1.42 2 3.172 2h85.656C90.58 56 92 55.105 92 54v-5c0-1.105-1.42-2-3.172-2zM60 13c0 7.18-5.82 13-13 13s-13-5.82-13-13S39.82 0 47 0s13 5.82 13 13z">
+                          </path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="box-1" (click)="updateResumePageBounds('headerLayout', 3)"
+                      [ngClass]="{'box-active': resumePageBounds?.headerLayout == 3}">
+                      <div class="inner  ">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 92 26">
+                          <path
+                            d="M26 13c0 7.18-5.82 13-13 13S0 20.18 0 13 5.82 0 13 0s13 5.82 13 13zM90 2H36a2 2 0 00-2 2v5a2 2 0 002 2h54a2 2 0 002-2V4a2 2 0 00-2-2zm0 13H36a2 2 0 00-2 2v5a2 2 0 002 2h54a2 2 0 002-2v-5a2 2 0 00-2-2z">
+                          </path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 pat">
+              <div class="picture">
+                <div class="left-heading">
+                  <h6>Picture</h6>
+                </div>
+
+                <div class="right-side">
+                  <mat-checkbox color="primary" [(ngModel)]="resumePageBondsCopy.enablePicture" #enablePicture
+                    (change)="updateResumePageBounds('enablePicture', resumePageBondsCopy.enablePicture)">Y/N
+                  </mat-checkbox>
+
+                  <div class="pic-round" (click)="updateResumePageBounds('pictureDisplayStyle', 1)"
+                    [ngClass]="{'pic-active': resumePageBounds?.pictureDisplayStyle == 1}"></div>
+
+                  <div class="pic-box" (click)="updateResumePageBounds('pictureDisplayStyle', 2)"
+                    [ngClass]="{'pic-active': resumePageBounds?.pictureDisplayStyle == 2}"></div>
+
+                  <div class="pic-box-1" (click)="updateResumePageBounds('pictureDisplayStyle', 3)"
+                    [ngClass]="{'pic-active': resumePageBounds?.pictureDisplayStyle == 3}"></div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 pat">
+              <div class="columns-cv">
+                <div class="left-heading">
+                  <h6>Column</h6>
+                </div>
+
+                <div class="right-sid">
+                  <a class="btn pic-btn" [ngClass]="{'box-activ': resumePageBounds?.columnType == 1 }"
+                    (click)="updateResumePageBounds('columnType', 1)">Single Column</a>
+
+                  <a class="btn pic-btn mt-left" [ngClass]="{'box-activ': resumePageBounds?.columnType == 2 }"
+                    (click)="updateResumePageBounds('columnType', 2)">Double Column</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Column formatting : Enabled only when double column is enabled-->
+            <ng-container *ngIf="resumePageBounds?.columnType == 2">
+              <div class="col-md-12 pat">
+                <div class="columns-cv">
+                  <div class="left-heading">
+                    <h6>Column Width</h6>
+                  </div>
+
+                  <div class="right-side">
+                    <div class="btn-left" style="width: 48%;">
+
+                      <span>
+                        left {{resumePageBounds.columns.leftWidth}}%
+                      </span>
+                      <a class="btn pic-btn" [style.width]="resumePageBounds.columns.leftWidth + '%'"
+                        (click)="updateColumnFormatting('columns', 0, 'leftWidth')">+</a>
+                    </div>
+                    <div class="btn-right" style="width: 48%;">
+                      <span>
+                        Right {{resumePageBounds.columns.rightWidth}}%
+                      </span>
+                      <a class="btn pic-btn" [style.width]="resumePageBounds.columns.rightWidth + '%'"
+                        (click)="updateColumnFormatting('columns', 0, 'rightWidth')">+</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 pat">
+                <div class="columns-cv">
+                  <div class="left-heading">
+                    <h6>Column Spacing</h6>
+                  </div>
+
+                  <div class="right-side">
+                    <div class="btn-left" style="width: 30%;">
+                      <button class="btn pic-btn" [disabled]="disableColumnSpacing"
+                        (click)="increaseColumnSpacing(2)">Minus -</button>
+                    </div>
+                    <div class="btn-right" style="width: 30%;">
+                      <a class="btn pic-btn" (click)="increaseColumnSpacing(1)">Plus +</a>
+                    </div>
+                    <div class="btn-right" style="width: 30%;">
+                      <a class="btn pic-btn" (click)="increaseColumnSpacing(3)">Reset</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 pat">
+                <div class="columns-cv">
+                  <div class="left-heading">
+                    <h6>Columns Colors </h6>
+                  </div>
+
+                  <div class="right-sidee">
+                    <div class="color-input">
+                      <span class="small-font">
+                        Left Background
+                      </span> &nbsp; &nbsp; &nbsp;
+                      <input type="color" [(ngModel)]="resumePageBondsCopy.columns.leftBackground"
+                        (input)="updateResumeFormatting()">
+                    </div>
+                    <div class="color-input mt-left">
+                      <span class="small-font">
+                        Left Font
+                      </span> &nbsp; &nbsp;&nbsp;
+                      <input type="color" [(ngModel)]="resumePageBondsCopy.columns.leftFontColor"
+                        (input)="updateResumeFormatting()">
+
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="col-md-12 pat">
+                <div class="columns-cv">
+                  <div class="left-heading">
+                    <h6></h6>
+                  </div>
+                  <div class="right-sidee">
+                    <div class="color-input">
+                      <span class="small-font">
+                        Right Background
+                      </span> &nbsp; &nbsp;
+                      <input type="color" [(ngModel)]="resumePageBondsCopy.columns.rightBackground"
+                        (input)="updateResumeFormatting()">
+                    </div>
+                    <div class="color-input mt-left">
+                      <span class="small-font">
+                        Right Font
+                      </span> &nbsp; &nbsp;
+                      <input type="color" [(ngModel)]="resumePageBondsCopy.columns.rightFontColor"
+                        (input)="updateResumeFormatting()">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+
+
+            <div class="col-md-12 pat">
+              <div class="columns-cv">
+                <div class="left-heading">
+                  <h6>Header Color</h6>
+                </div>
+
+                <div class="right-sid">
+                  <div class="header-left-1">
+                    <input type="color" [(ngModel)]="resumePageBondsCopy.colors.headerBackground"
+                      (input)="updateResumeFormatting()" class="color">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 pat">
+              <div class="columns-cv">
+                <div class="left-heading">
+                  <h6>Body Colors</h6>
+                </div>
+
+                <div class="right-sid">
+                  <div style="margin-right: 50px;">
+                    <span>Background</span>
+                    <div class="flex-center">
+                      <input type="color" [(ngModel)]="resumePageBondsCopy.colors.bodyBackground"
+                        (input)="updateResumeFormatting()" class="color">
+                    </div>
+                  </div>
+                  <div>
+                    <span>Font</span>
+                    <div class="flex-center">
+                      <input type="color" [(ngModel)]="resumePageBondsCopy.colors.bodyFontColor"
+                        (input)="updateResumeFormatting()" class="color">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 pat">
+              <div class="columns-cv">
+                <div class="left-heading">
+                  <h6>Page Format</h6>
+                </div>
+
+                <div class="right-sid">
+                  <a class="btn pic-btn"
+                    [ngClass]="{'box-activ': resumePageBounds?.formatting?.pageFormat == 'a4'}"
+                    (click)="updateResumePageBounds('formatting', 'a4','pageFormat', true)">A4</a>
+                  <a class="btn pic-btn mt-left"
+                    [ngClass]="{'box-activ': resumePageBounds?.formatting?.pageFormat == 'latter'}"
+                    (click)="updateResumePageBounds('formatting','latter','pageFormat', true)">Latter</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 pat">
+              <div class="columns-cv">
+                <div class="left-heading">
+                  <h6>Date Formate Year:</h6>
+                </div>
+                <div class="right-sid">
+                  <a class="btn pic-btn" [ngClass]="{'box-activ': resumePageBounds?.dateFormat?.yearFormat == 'yy'}"
+                    (click)="updateResumePageBounds('dateFormat', 'yy', 'yearFormat')">Short(19)</a>
+                  <a class="btn pic-btn mt-left"
+                    [ngClass]="{'box-activ': resumePageBounds?.dateFormat?.yearFormat == 'yyyy'}"
+                    (click)="updateResumePageBounds('dateFormat', 'yyyy', 'yearFormat')">Long(2019)</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 pat">
+              <div class="columns-cv">
+                <div class="left-heading dt">
+                  <h6> Month:</h6>
+                </div>
+                <div class="right-sid">
+                  <a class="btn pic-btn" [ngClass]="{'box-activ': resumePageBounds?.dateFormat?.monthFormat == 'MM'}"
+                    (click)="updateResumePageBounds('dateFormat', 'MM', 'monthFormat')">Num (06)</a>
+                  <a class="btn pic-btn mt-left"
+                    [ngClass]="{'box-activ': resumePageBounds?.dateFormat?.monthFormat == 'MMM'}"
+                    (click)="updateResumePageBounds('dateFormat', 'MMM', 'monthFormat')">Short (jun)</a>
+                  <a class="btn pic-btn mt-left"
+                    [ngClass]="{'box-activ': resumePageBounds?.dateFormat?.monthFormat == 'MMMM'}"
+                    (click)="updateResumePageBounds('dateFormat', 'MMMM', 'monthFormat')">Long (june)</a>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 pat">
+              <div class="columns-cv">
+                <div class="left-heading dt">
+                  <h6> Separator:</h6>
+                </div>
+                <div class="right-sid">
+                  <a class="sep-b" [ngClass]="{'box-activ': resumePageBounds?.dateFormat?.separator == '/'}"
+                    (click)="updateResumePageBounds('dateFormat', '/', 'separator')">/</a>
+                  <a class="sep-b mt-left" [ngClass]="{'box-activ': resumePageBounds?.dateFormat?.separator == '-'}"
+                    (click)="updateResumePageBounds('dateFormat', '-', 'separator')">-</a>
+                  <a class="sep-b mt-left" [ngClass]="{'box-activ': resumePageBounds?.dateFormat?.separator == '.'}"
+                    (click)="updateResumePageBounds('dateFormat', '.', 'separator')">.</a>
+                  <a class="sep-b mt-left white-space-option-box"
+                    [ngClass]="{'box-activ': resumePageBounds?.dateFormat?.separator == '&nbsp;&nbsp;'}"
+                    (click)="updateResumePageBounds('dateFormat', '&nbsp;&nbsp;', 'separator')">white-space</a>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 pat">
+              <div class="columns-cv">
+                <div class="left-heading dt">
+                  <h6> Display Icons:</h6>
+                </div>
+                <div class="right-sid">
+                  <mat-checkbox class="example-margin" color="primary"
+                    (change)="updateResumePageBounds('displayIcons', resumePageBondsCopy?.displayIcons)"
+                    [(ngModel)]="resumePageBondsCopy.displayIcons">
+                  </mat-checkbox>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 pat" *ngIf="resumePageBondsCopy.columnType == 1">
+              <div class="columns-cv">
+                <div class="left-heading dag">
+                  <h6> Section Order:</h6>
+                </div>
+                <div class="right-sid">
+                  <div class="drag-left">
+                    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+                      <div class="example-box" *ngFor="let section of sectionOrder;let i = index" cdkDrag>
+                        <div>
+                          <span class="section-order-and-title">{{i + 1}}.</span>
+                          <span class="section-title">{{section.displayName ? section.displayName  : section}}</span>
+                        </div>
+                        <span><img src="../../../../../assets/resume/drag.svg" class="drag-icon"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 pat" *ngIf="resumePageBondsCopy.columnType == 2">
+              <div class="columns-cv">
+                <div class="left-heading dag">
+                  <h6> Section Order:</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 pat" *ngIf="resumePageBondsCopy.columnType == 2">
+              <div class="columns-cv">
+                <div class="right-sid">
+                  <div class="lef-right-dnd">
+                    <div class="example-container">
+                      <div cdkDropList #leftSections="cdkDropList"
+                        [cdkDropListData]="towColumnsSections.leftColumnOrder"
+                        [cdkDropListConnectedTo]="[rightSections]" class="example-list"
+                        (cdkDropListDropped)="dropDoubleColumn($event)">
+                        <div class="example-box"
+                          *ngFor="let section of towColumnsSections.leftColumnOrder;let i = index" cdkDrag>
+                          <div>
+                            <span class="section-order-and-title">{{i + 1}}.</span>
+                            <span class="section-title">{{section.displayName ? section.displayName  : section}}</span>
+                          </div>
+                          <span style="margin-left: 3px;"><img src="../../../../../assets/resume/drag.svg"
+                              class="drag-icon"></span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="example-container">
+                      <div cdkDropList #rightSections="cdkDropList"
+                        [cdkDropListData]="towColumnsSections.rightColumnOrder"
+                        [cdkDropListConnectedTo]="[leftSections]" class="example-list"
+                        (cdkDropListDropped)="dropDoubleColumn($event)">
+                        <div class="example-box"
+                          *ngFor="let section of towColumnsSections.rightColumnOrder;let i = index" cdkDrag>
+                          <div>
+                            <span class="section-order-and-title">{{i + 1}}.</span>
+                            <span class="section-title">{{section.displayName ? section.displayName  : section}}</span>
+                          </div>
+                          <span style="margin-left: 3px;"><img src="../../../../../assets/resume/drag.svg"
+                              class="drag-icon"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-md-12 text-center">
+              <div class="bbtn-top">
+
+                <a class="btn save-format-btn">
+                  Save Format as new Template
+                </a>
+              </div>
+            </div>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Design Template
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="col-sm-12">
+              <div class="filters-sec">
+                <div class="left-filters">
+                  <h6>
+                    Filters
+                  </h6>
+                </div>
+                <div class="right-side-btn">
+
+                  <a class="btn-view select"> View All</a>
+                  <a class="btn-view"> One Column</a>
+                  <a class="btn-view"> Two Column</a>
+                  <a class="btn-view select"> View All</a>
+                  <a class="btn-view"> With Picture</a>
+                  <a class="btn-view"> Without Picture</a>
+                  <a class="btn-view select"> View All</a>
+                  <a class="btn-view"> Public</a>
+                  <a class="btn-view"> Private</a>
+
+
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="filters-sec">
+                <div class="left-filters">
+                  <h6>
+                    Styles
+                  </h6>
+                </div>
+                <div class="right-side-btn">
+                  <a class="btn-view select"> View All</a>
+                  <a class="btn-view"> Formal</a>
+                  <a class="btn-view"> Creative</a>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- slider -->
+            <div class="tem-slider">
+              Slider-section
+            </div>
+
+            <br>
+
+            <div class="col-md-12 text-center">
+              <div class="bbtn-top">
+
+                <a class="btn save-format-btn">
+                  Save Format as new Template
+                </a>
+              </div>
+            </div>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Formatting
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <div class="col-sm-12 pat">
+              <div class="format-slider">
+                <div class="header-left">
+                  <h6>
+                    Header Font size
+                  </h6>
+                </div>
+                <div class="header-left-1">
+                  <mat-slider color="primary" [min]=9 [max]=13
+                    [(ngModel)]="resumePageBondsCopy.formatting.headerFontSize" (change)="updateResumeFormatting()">
+                  </mat-slider>
+                  <span>{{resumePageBondsCopy.formatting.headerFontSize}}pt</span>
+                </div>
+                <div class="header-left-2">
+                  <input type="color" [(ngModel)]="resumePageBondsCopy.colors.headerColor"
+                    (input)="updateResumeFormatting()" class="color">
+                </div>
+                <!-- <div class="header-left-3">
+                  <a class="line-style">Line Style</a>
+                </div> -->
+
+              </div>
+              <div class="format-slider">
+                <div class="header-left">
+                  <h6>
+                    Title Font size
+                  </h6>
+                </div>
+                <div class="header-left-1">
+                  <mat-slider color="primary" [min]=9 [max]=14
+                    [(ngModel)]="resumePageBondsCopy.formatting.titleFontSize" (change)="updateResumeFormatting()">
+                  </mat-slider>
+                  <span>{{resumePageBondsCopy.formatting.titleFontSize}}pt</span>
+                </div>
+                <div class="header-left-2">
+                  <input type="color" [(ngModel)]="resumePageBondsCopy.colors.titleColor"
+                    (input)="updateResumeFormatting()" class="color">
+                </div>
+                <!-- <div class="header-left-3">
+                  <a class="line-style">Line Style</a>
+                </div> -->
+
+              </div>
+              <div class="format-slider">
+                <div class="header-left">
+                  <h6>
+                    Body Font size
+                  </h6>
+                </div>
+                <div class="header-left-1">
+                  <mat-slider color="primary" [min]=8 [max]=14 [(ngModel)]="resumePageBondsCopy.formatting.bodyFontSize"
+                    (change)="updateResumeFormatting()"></mat-slider>
+                  <span>{{resumePageBondsCopy.formatting.bodyFontSize}}pt</span>
+                </div>
+                <div class="header-left-2">
+                  <input type="color" class="color hidden-element">
+                </div>
+              </div>
+              <div class="format-slider">
+                <div class="header-left">
+                  <h6>
+                    Border Width
+                  </h6>
+                </div>
+                <div class="header-left-1">
+                  <mat-slider color="primary" [min]=0 [max]=10 [(ngModel)]="resumePageBondsCopy.formatting.borderWidth"
+                    (change)="updateResumeFormatting()"></mat-slider>
+                  <span>{{resumePageBondsCopy.formatting.borderWidth}}px</span>
+                </div>
+                <div class="header-left-2">
+                  <input type="color" [(ngModel)]="resumePageBondsCopy.colors.borderColor"
+                    (input)="updateResumeFormatting()" class="color">
+                </div>
+
+              </div>
+              <div class="format-slider">
+                <div class="header-left">
+                  <h6>
+                    Text Spacing
+                  </h6>
+                </div>
+                <div class="header-left-1">
+                  <mat-slider color="primary" [min]=14 [max]=45 [(ngModel)]="resumePageBondsCopy.formatting.textSpacing"
+                    (change)="updateResumeFormatting()"></mat-slider>
+                  <span>{{resumePageBondsCopy.formatting.textSpacing}}px</span>
+                </div>
+                <div class="header-left-2">
+                  <input type="color" class="color hidden-element">
+                </div>
+
+              </div>
+              <div class="format-slider">
+                <div class="header-left">
+                  <h6>
+                    Section Spacing
+                  </h6>
+                </div>
+                <div class="header-left-1">
+                  <mat-slider color="primary" [min]=0 [max]=60 step=4
+                    [(ngModel)]="resumePageBondsCopy.formatting.sectionSpacing" (change)="updateResumeFormatting()">
+                  </mat-slider>
+                  <span>{{resumePageBondsCopy.formatting.sectionSpacing}}px</span>
+                </div>
+
+                <div class="header-left-2">
+                  <input type="color" class="color hidden-element">
+                </div>
+              </div>
+              <div class="format-slider">
+                <div class="header-left">
+                  <h6>
+                    Horizontal Margin
+                  </h6>
+                </div>
+                <div class="header-left-1">
+                  <mat-slider color="primary" [min]=1 [max]=25
+                    [(ngModel)]="resumePageBondsCopy.formatting.horizontalMargin" (change)="updateResumeFormatting()">
+                  </mat-slider>
+                  <span>{{resumePageBondsCopy.formatting.horizontalMargin}}mm</span>
+                </div>
+                <div class="header-left-2">
+                  <input type="color" class="color hidden-element">
+                </div>
+
+              </div>
+              <div class="format-slider">
+                <div class="header-left">
+                  <h6>
+                    Vertical Margin
+                  </h6>
+                </div>
+                <div class="header-left-1">
+                  <mat-slider color="primary" [min]=5 [max]=20
+                    [(ngModel)]="resumePageBondsCopy.formatting.verticalMargin" (change)="updateResumeFormatting()">
+                  </mat-slider>
+                  <span>{{resumePageBondsCopy.formatting.verticalMargin}}mm</span>
+                </div>
+                <div class="header-left-2">
+                  <input type="color" class="color hidden-element">
+                </div>
+              </div>
+              <div class="format-slider" style="margin-bottom: 20px;flex-wrap: wrap;">
+                <div class="header-left">
+                  <h6>
+                    Section Line
+                  </h6>
+                </div>
+                <div class="header-left-1">
+                  <mat-slider color="primary" [min]=0 [max]=100
+                    [(ngModel)]="resumePageBondsCopy.formatting.sectionLineWidth" (change)="updateResumeFormatting()">
+                  </mat-slider>
+                  <span>{{resumePageBondsCopy.formatting.sectionLineWidth}}%</span>
+                </div>
+                <br>
+                <div class="right-sid" style="justify-content: center;">
+                  <a class="btn pic-btn"
+                    [ngClass]="{'box-activ': resumePageBondsCopy.formatting.sectionLineAlignment == 'flex-start'}"
+                    (click)="updateResumePageBounds('formatting', 'flex-start', 'sectionLineAlignment', true)">Left</a>
+                  <a class="btn pic-btn mt-left"
+                    [ngClass]="{'box-activ': resumePageBondsCopy.formatting.sectionLineAlignment == 'center'}"
+                    (click)="updateResumePageBounds('formatting', 'center', 'sectionLineAlignment', true)">Center</a>
+                  <a class="btn pic-btn mt-left"
+                    [ngClass]="{'box-activ': resumePageBondsCopy.formatting.sectionLineAlignment == 'flex-end'}"
+                    (click)="updateResumePageBounds('formatting', 'flex-end', 'sectionLineAlignment', true)">Right</a>
+                </div>
+              </div>
+
+              <div class="format-slider">
+                <div class="header-left">
+                  <h6>
+                    section line width
+                  </h6>
+                </div>
+                <div class="header-left-1">
+                  <mat-slider color="primary" [min]=1 [max]=5
+                    [(ngModel)]="resumePageBondsCopy.formatting.sectionLineThickness"
+                    (change)="updateResumeFormatting()">
+                  </mat-slider>
+                  <span>{{resumePageBondsCopy.formatting.sectionLineThickness}}px</span>
+                </div>
+                <div class="header-left-2">
+                  <input type="color" class="color hidden-element">
+                </div>
+              </div>
+
+              <div class="format-slider">
+                <div class="header-left">
+                  <h6>
+                    Font Family
+                  </h6>
+                </div>
+                <div class="font-family-container">
+                  <a class="btn pic-btn font-family-button mt-left font-lora"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Lora'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Lora')">Lora</a>
+                  <a class="btn pic-btn font-family-button mt-left font-Quicksand"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Quicksand'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Quicksand')">Quicksand</a>
+                  <a class="btn pic-btn font-family-button mt-left font-Comfortaa"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Comfortaa'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Comfortaa')">Comfortaa</a>
+                  <a class="btn pic-btn font-family-button mt-left font-Parisienne"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Parisienne'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Parisienne')">Parisienne</a>
+                  <a class="btn pic-btn font-family-button mt-left font-Caveat"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Caveat'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Caveat')">Caveat</a>
+                  <a class="btn pic-btn font-family-button mt-left font-Cormorant"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Cormorant'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Cormorant')">Cormorant Garamond</a>
+                  <a class="btn pic-btn font-family-button mt-left font-Patrick"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Patrick'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Patrick')">Patrick Hand</a>
+                  <a class="btn pic-btn font-family-button mt-left font-Gabriela"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Gabriela'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Gabriela')">Gabriela</a>
+                  <a class="btn pic-btn font-family-button mt-left font-IBM"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'IBM'}"
+                    (click)="updateResumePageBounds('fontFamily', 'IBM')">IBM Plex Mono</a>
+                  <a class="btn pic-btn font-family-button mt-left font-Ubuntu"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Ubuntu'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Ubuntu')">Ubuntu</a>
+                  <a class="btn pic-btn font-family-button mt-left font-Merriweather"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Merriweather'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Merriweather')">Merriweather</a>
+                  <a class="btn pic-btn font-family-button mt-left font-Source"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Source'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Source')">Source Sans Pro</a>
+                  <a class="btn pic-btn font-family-button mt-left font-Rhodium"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Rhodium'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Rhodium')">Rhodium Libre</a>
+                  <a class="btn pic-btn font-family-button mt-left font-Montserrat"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Montserrat'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Montserrat')">Montserrat</a>
+                  <a class="btn pic-btn font-family-button mt-left font-Raleway"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Raleway'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Raleway')">Raleway</a>
+                  <a class="btn pic-btn font-family-button mt-left font-Roboto"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Roboto'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Roboto')">Roboto</a>
+                  <a class="btn pic-btn font-family-button mt-left font-Radley"
+                    [ngClass]="{'box-activ': resumePageBounds?.fontFamily == 'Radley'}"
+                    (click)="updateResumePageBounds('fontFamily', 'Radley')">Radley</a>
+                </div>
+              </div>
+
+              <div class="col-md-12 text-center" style="margin-top: 20px;">
+                <div class="bbtn-top">
+
+                  <a class="btn save-format-btn">
+                    Save Format as new Template
+                  </a>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
+      </div>
+      <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+        <div class="resume-over">
+
+          <app-resume-overview></app-resume-overview>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

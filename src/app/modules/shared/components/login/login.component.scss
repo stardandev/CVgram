@@ -1,0 +1,337 @@
+
+@import '../../../../../assets/styles/breakpoints.scss';
+#signLogInTabContent .tab-pane {
+    padding: 20px;
+    border-radius: 3px;
+    border: 1px solid #d4e2f5;
+    background-color: #ffffff;
+}
+
+.signupLink,
+.forgotpass {
+    text-decoration: underline !important;
+    color: #167af0 !important;
+}
+
+.priclr {
+    color: #167af0;
+}
+
+.signInBtn {
+    text-transform: uppercase;
+    color: #fff !important;
+}
+
+.cntrySelect {}
+
+.signUpModal sup {
+    color: #ff0d0d;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.modal {
+    z-index: 9999;
+}
+
+.countryCodeMenu {
+    max-height: 100px;
+    overflow: auto;
+}
+
+.phoneWithCountryBox {
+    select {
+        width: 60px;
+        padding: 4px 5px;
+    }
+}
+
+.recaptch_box {
+    margin-bottom: 21px;
+}
+
+.inputErrorBox {
+    padding-right: 5px;
+    padding-left: 0;
+    color: rgb(221, 44, 0);
+    font-size: 12px;
+    line-height: 14px;
+    overflow: hidden;
+    transition: all .3s cubic-bezier(.55, 0, .55, .2);
+    /* opacity: 1; */
+    /* margin-top: 0; */
+    padding-top: 5px;
+}
+
+.form-control {
+    &.ng-touched {
+        &.ng-invalid {
+            border-color: #dd2c00 !important;
+        }
+    }
+}
+
+.signInModal input,
+.signInModal .dropdown-menu,
+.signUpModal input,
+.signUpModal .dropdown-menu,
+.signUpModal .form-control,
+.signInModal .form-control {
+    border: 1px solid #d4e2f5;
+}
+
+.cntryCdrpdown {
+    border: 1px solid #d4e2f5;
+    border-top-left-radius: 0.25rem !important;
+    border-bottom-left-radius: 0.25rem !important;
+}
+
+.captchaBox {
+    border: 1px solid #d4e2f5;
+    display: inline-block;
+    padding: 25px 35px;
+    font-size: 16px;
+    margin: 15px 0;
+    border-radius: 3px;
+}
+
+.signInModal .modal-dialog {}
+
+.modal-content {
+    overflow: hidden;
+}
+
+.signInbg {
+    width: 100%;
+    height: 100%;
+    background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('../../../../../assets/Login.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+    border-right: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: #000;
+}
+
+// .signlayer {
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     opacity: 0;
+//     transition: .5s ease;
+//     overflow: hidden;
+//     opacity: 0.1;
+//     background-color: #0b004c;
+//     filter: Alpha(opacity=63);
+   
+//     z-index: 1;
+// }
+
+// .signlayer .logo {
+//     text-align: center;
+//     position: relative;
+//     top: 50%;
+//     transform: translateY(-50%);
+// }
+
+.logo svg {
+    width: 225px;
+}
+
+.shrtnote {
+    color: #1e1f65;
+    font-size: 14px;
+    /* margin-top: -50px; */
+    font-weight: 600;
+    /* letter-spacing: 0px; */
+    width: 100%;
+    margin: 0px auto;
+    padding-bottom: -53px;
+    padding: 20px;
+}
+
+.signInBox {
+    padding: 120px 25px 120px 5px;
+}
+
+.close {
+    margin: 10px;
+}
+.signInModal .clsBtn,
+.signUpModal .clsBtn {
+    
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 1600;
+    svg {
+        width: 25px;
+        height: 25px;
+        fill: #333333;
+    }
+}
+
+.welmsgsignup {
+    padding: 0;
+    height: 120px;
+}
+
+.btnbuyNow_lg {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    padding: .9rem 0.75rem;
+    font-size: 16px;
+    line-height: 1.3;
+    border-radius: 4px;
+    background-color: #167af2;
+    color: #fff;
+    text-transform: uppercase;
+    .arrowBox {
+        display: inline;
+        padding: 0;
+        margin: 0 0 0 5px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #signInModal .modal-dialog,
+    #signUpModal .modal-dialog {
+        max-width: 1000px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {}
+
+.right_side_container {
+    padding: 30px;
+}
+
+.signup_modal {
+    height: 90%;
+    .signup_modal_content {
+        height: 100%;
+        .signup_modal_body {
+            height: 100%;
+            .signup_modal_row {
+                height: 100%;
+                .left_side_container,
+                .right_side_container {
+                    height: 100%;
+                }
+                .signup_form {
+                    height: calc(100% - 140px);
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    padding-right: 25px;
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .signup_form {
+        padding-right: 10px !important;
+        padding-left: 10px;
+    }
+    .modal-dialog {
+        max-width: 800px;
+        width: 50%;
+        margin: 0 auto;
+    }
+    .right_side_container {
+        padding: 30px;
+    }
+    .welmsgsignup h1{
+        font-size: 1.9em;
+    }
+}
+
+.activeLink {
+    text-decoration: underline !important;
+    color: #167af0 !important;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    .left_side_container {
+        display: none;
+    }
+    .right_side_container {
+        padding: 30px;
+    }
+    .right_side_container{
+       max-width: 100% !important;
+      flex: 0 0 100% !important
+    }
+    .welmsgsignup {
+        h1 {
+            font-size: 25px;
+        }
+    }
+    .signup_form {
+        overflow-x: hidden;
+    }
+    .modal-dialog {
+        max-width: 800px;
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+.error-img{
+    width: 2.1em;
+}
+
+.buttonInside{
+    position:relative;
+    margin-bottom:10px;
+  }
+
+.footer-links {
+    margin: 1.2em 0;
+}
+
+svg {
+    width: 27px;
+  
+}
+
+
+.row.signin_modal_row {
+
+    @include media(">phone", "<=tablet"){
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+}
+
+
+.cdk-overlay-container
+
+    ::ng-deep #cdk-overlay-1{
+        @include media(">phone", "<=tablet"){
+            max-width: 95vw !important;
+        }
+    }
+.welmsgsignup{
+    @include media(">phone", "<=tablet"){
+        height: 135px;
+    }
+}
+.submit-loader {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+}

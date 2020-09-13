@@ -1,0 +1,31 @@
+<div class="language-form">
+  <div class="addFormHeading"><span>{{operationType}} Skill</span>
+  </div>
+  <div class="language-form-box" [formGroup]="skillForm">
+    <mat-form-field style="width: 80%;">
+      <input formControlName="name" matInput placeholder="Skill">
+    </mat-form-field>
+  
+    <mat-form-field style="width: 80%;">
+      <mat-select formControlName="level"
+        placeholder="Skill Level">
+        <mat-option value="1">Beginner</mat-option>
+        <mat-option value="2">Average</mat-option>
+        <mat-option value="3">Skilled</mat-option>
+        <mat-option value="4">Specialist</mat-option>
+        <mat-option value="5">Expert</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-checkbox formControlName="showSkillLevel" color="primary">
+      {{'global.showSkillLevel' | translate}}</mat-checkbox>
+  </div>
+  <div class="lan-btn"> 
+    <button class="btn-all btn-save" [disabled]="skillForm.invalid" (click)="saveSkill()">
+      Save
+    </button>
+    <a (click)="closeForm()" class="btn-all btn-save">
+      Cancel
+    </a>
+  </div>
+</div>

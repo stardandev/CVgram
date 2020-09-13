@@ -1,0 +1,80 @@
+@import '../../../../../../assets/styles/custom-styles.scss';
+
+.btn-all {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    padding: 7px 15px;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: normal;
+    color: #484848;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: none;
+    border-radius: 4px;
+    background: #fff;
+    -webkit-transition: 0.1s ease-in;
+    -webkit-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in;
+    z-index: 2;
+    margin: 5px;
+    border: 1px solid #005C97;
+}   
+
+.btn-save:hover {
+    background-color: transparent;
+    color: #000000;
+    border: 1px solid #005C97;
+}
+
+.btn-save {
+    background-color: #005C97;
+    color: #fff;
+}
+
+button.btn-all.btn-save:disabled {
+    background-color: #bfbfbf;
+    color: white;
+    border-color: #bfbfbf;
+}
+
+.language-form{
+    width: 100%;
+    margin: 0 auto;
+    padding: 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 3px 4px rgba(0,0,0,.2);
+    margin-top: 20px;
+    position: relative;
+
+    .language-form-box{
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .lan-btn{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        bottom: 0px;
+        right: 0px;
+    }
+} 
+
+.addFormHeading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    span {
+        color: black;
+    font-weight: 500;
+    font-size: 18px;
+    }
+}

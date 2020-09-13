@@ -1,0 +1,46 @@
+<div class="dialog-padding">
+    <h2 mat-dialog-title class="dialog-title"> Select a CV to start from or create one from scratch </h2>
+    <mat-dialog-content>
+
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" class="resume-table">
+
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                    <!-- <mat-checkbox (change)="$event ? masterToggle() : null"
+                              [checked]="selection.hasValue() && isAllSelected()"
+                              [indeterminate]="selection.hasValue() && !isAllSelected()">
+                </mat-checkbox> -->
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-radio-button color="primary" (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)"></mat-radio-button>
+                </td>
+            </ng-container>
+
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> CV Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+            </tr>
+        </table>
+
+
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button class="btn btn-sign btn-all cursor-pointer" (click)="closeModal(0)">Cancel</button>
+        <button class="btn btn-sign btn-all cursor-pointer" (click)="closeModal(1)" cdkFocusInitial>Create from Scractch</button>
+        <button class="btn btn-sign btn-all cursor-pointer" (click)="closeModal(2)"  [disabled]="selection.selected.length < 1">Create from selected</button>
+    </mat-dialog-actions>
+
+</div>

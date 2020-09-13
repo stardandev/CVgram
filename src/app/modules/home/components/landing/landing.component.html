@@ -1,0 +1,295 @@
+
+<div class="outer">
+  <app-header></app-header>
+
+
+  <div class="inner">
+<div class="cv-site">
+  <section class="sec-banner">
+    <div class="container">
+      <div class="row d_flex justify-content-center align-items-center">
+        <div class="col-md-6">
+          <div class="main-text text-bg">
+            <h1>
+              {{ 'landing.intro.title' | translate }}
+            </h1>
+            <span>  {{ 'landing.intro.caption' | translate }}</span>
+            <p>
+              {{ 'landing.intro.description' | translate }}
+            </p>
+            <a (click)="navigateToDashboard()">{{ 'buttons.getStarted' | translate }}</a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="text-img">
+            <figure>
+              <img
+                src="../../../../../assets/Ceevee.png"
+                alt="#"
+                class="img-fluid"
+              />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vid-sec">
+    <div class="container">
+      <div class="services-vid">
+      
+
+        <div class="ser-video-sec">
+          <div class="home-center-text">
+            <h3 class="text-center text-white">
+              {{'landing.section1.title' | translate}}
+            </h3>
+          </div>
+
+          <div class="video-image" >
+            <img
+              src="../../../../assets/d.png"
+              class="home-img-video"
+              alt="video image"
+            />
+            <div class="btn-home-video-play">
+              <img
+                src="../../../../assets/play-icon.png"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="services-template ">
+        <div class="home-center-text">
+          <h5 class="text-center text-white">
+            {{'landing.section1.description' | translate}}
+          </h5>
+        </div>
+        <div class="line-separator"></div>
+
+        <div class="slider-tem">
+          <ngx-slick-carousel class="carousel" 
+          #slickModal="slick-carousel" 
+          [config]="slideConfig" 
+          >
+          <div ngxSlickItem *ngFor="let slide of slides" class="slide slider-img">
+          <img src="{{ slide.img }}" alt="" class="img-fluid">
+
+          <!-- <div class="dp-btn">
+            <a class="sel-btn">
+              {{'global.selectTemplate' | translate}}
+            </a>
+          </div> -->
+          <!-- <div class="overlay"></div> -->
+          </div>
+          </ngx-slick-carousel>
+        </div>
+
+        <a>{{ 'buttons.getTemplate' | translate }}</a>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="cv-content bg-grey-light">
+    <div class="container">
+      <h2>  {{'landing.section2.title' | translate}}</h2>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="cv-box-1 h-box1">
+            <img src="../../../../assets/Landing/dashboard.png" alt="">
+            <h2>{{'landing.section2.details1.title' | translate}}</h2>
+            <p>{{'landing.section2.details1.description' | translate}}</p>
+          </div>
+        </div>
+        <div class="col-sm-6">  
+          <div class="cv-box-1 h-box2">
+            <img src="../../../../assets/Landing/graph.png" alt="">
+            <h2>{{'landing.section2.details2.title' | translate}}</h2>
+            <p>{{'landing.section2.details1.description' | translate}}</p>
+        </div>
+      </div>
+        <div class="col-sm-6">
+          <div class="cv-box-1 h-box3">
+            <img src="../../../../assets/Landing/documents.png" alt="">
+            <h2>{{'landing.section2.details3.title' | translate}}</h2>
+            <p>{{'landing.section2.details1.description' | translate}}</p>
+        </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="cv-box-1 h-box4">
+            <img src="../../../../assets/Landing/lab.png" alt="">
+            <h2>{{'landing.section2.details4.title' | translate}}</h2>
+            <p>{{'landing.section2.details1.description' | translate}}</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="annual-how-works">
+    <div class="how-it-works text-center">
+      <h2>
+        {{'landing.section2.howItWorks.title' | translate}}
+      </h2>
+    </div>
+    <div class="htw-sec">
+      <div class="htw-outer">
+        <div class="htw-inner">
+          <div class="htw-box">
+            <div class="htw-box-1">
+              <div class="htw-circle-box">
+                <div class="htw-box-img">
+                  <img src="../../../../assets/Landing/1.svg"
+                    alt="man clicking on a big tablet to choose order" class="style__Image-sc-69n2u4-6 cBvpNM">
+                </div>
+                <span>1</span>
+
+                <div class="htw-box-con">
+                  <h6>
+                    {{'landing.section2.howItWorks.section1.title' | translate}}
+                  </h6>
+                  <p>
+                    {{'landing.section2.howItWorks.section1.description' | translate}}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="htw-box-1">
+              <div class="htw-circle-box">
+                <div class="htw-box-img">
+                  <h6>
+                    {{'landing.section2.howItWorks.section2.title' | translate}}
+                  </h6>
+                  <p>
+                    {{'landing.section2.howItWorks.section2.description' | translate}}
+                  </p>
+                </div>
+                <span>2</span>
+
+                <div class="htw-box-con">
+                  <img src="../../../../assets/Landing/4.svg"
+                    alt="man clicking on a big tablet to choose order" class="style__Image-sc-69n2u4-6 cBvpNM">
+                </div>
+              </div>
+            </div>
+            <div class="htw-box-1">
+              <div class="htw-circle-box">
+                <div class="htw-box-img">
+                  <img src="../../../../assets/Landing/3.svg"
+                    alt="man clicking on a big tablet to choose order" class="style__Image-sc-69n2u4-6 cBvpNM">
+                </div>
+                <span>3</span>
+
+                <div class="htw-box-con">
+                  <h6>
+                    {{'landing.section2.howItWorks.section3.title' | translate}}
+                  </h6>
+                  <p>
+                    {{'landing.section2.howItWorks.section3.description' | translate}}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="htw-box-1">
+              <div class="htw-circle-box">
+                <div class="htw-box-img">
+                  <h6>
+                    {{'landing.section2.howItWorks.section4.title' | translate}}
+                  </h6>
+                  <p>
+                    {{'landing.section2.howItWorks.section4.description' | translate}}
+                  </p>
+                </div>
+                <span>4</span>
+
+                <div class="htw-box-con">
+                  <img src="../../../../assets/Landing/2.svg"
+                    alt="" class=" cBvpNM">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- for-mobile -->
+    <div class="htw-mobile">
+      <div class="htw-box-mobile">
+        <div class="htw-box-1-mobile">
+          <div class="htw-circle-mobile">
+            <span>1</span>
+          </div>
+          <div class="htw-mobile-con">
+            <img src="../../../../assets/Landing/1.svg" alt="" class="img-fluid" >
+            <h6>
+              {{'landing.section2.howItWorks.section4.title' | translate}}
+            </h6>
+            <p>
+              {{'landing.section2.howItWorks.section4.description' | translate}}
+            </p>
+          </div>
+        </div>
+
+        <div class="htw-box-1-mobile">
+          <div class="htw-circle-mobile">
+            <span>2</span>
+          </div>
+          <div class="htw-mobile-con">
+            <img src="../../../../assets/Landing/4.svg" alt="" class="img-fluid" >
+            <h6>
+              {{'landing.section2.howItWorks.section2.title' | translate}}
+            </h6>
+            <p>
+              {{'landing.section2.howItWorks.section2.description' | translate}}
+            </p>
+          </div>
+        </div>
+
+
+        <div class="htw-box-1-mobile">
+          <div class="htw-circle-mobile">
+            <span>3</span>
+          </div>
+          <div class="htw-mobile-con">
+            <img src="../../../../assets/Landing/3.svg" alt="" class="img-fluid" >
+            <h6>
+              {{'landing.section2.howItWorks.section3.title' | translate}}
+            </h6>
+            <p>
+              {{'landing.section2.howItWorks.section3.description' | translate}}
+            </p>
+          </div>
+        </div>
+
+
+        <div class="htw-box-1-mobile">
+          <div class="htw-circle-mobile">
+            <span>4</span>
+          </div>
+          <div class="htw-mobile-con">
+            <img src="../../../../assets/Landing/2.svg" alt="" class="img-fluid" >
+            <h6>
+              {{'landing.section2.howItWorks.section4.title' | translate}}
+            </h6>
+            <p>
+              {{'landing.section2.howItWorks.section4.description' | translate}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+  <app-footer></app-footer>
+</div>

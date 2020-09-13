@@ -1,0 +1,922 @@
+<div class="bot-btn">
+  <a class="btn btn-cv" (click)="download()">
+    Download
+  </a>
+  <a class="btn btn-cv">
+    Shared
+  </a>
+
+  <a class="btn btn-cv" (click)="saveResume()">
+    {{userContent.id ? 'Update' : 'Save'}}
+  </a>
+</div>
+
+<div class="bot-btn">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" (click)="previous()">&laquo;</a></li>
+
+    <ng-container *ngFor="let num of paginationArr;let i = index">
+      <li class="page-item" [ngClass]="i==count?'active':''" (click)="paginate(i)"><a class="page-link"> {{num}} </a></li>
+    </ng-container>
+
+    <li class="page-item"><a class="page-link" (click)="next()">&raquo;</a></li>
+  </ul>
+</div>
+<div class="display-box email-display-box" id="resumeOverviewContainer">
+  <div class="dis-box page-a4" id="resumeStarted" [ngClass]="{
+      'font-size-eight-pt': resumePageBounds.formatting.bodyFontSize == 8,
+      'font-size-nine-pt': resumePageBounds.formatting.bodyFontSize == 9,
+      'font-size-ten-pt': resumePageBounds.formatting.bodyFontSize == 10,
+      'font-size-eleven-pt': resumePageBounds.formatting.bodyFontSize == 11,
+      'font-size-twelve-pt': resumePageBounds.formatting.bodyFontSize == 12,
+      'font-size-thirteen-pt': resumePageBounds.formatting.bodyFontSize == 13,
+      'font-size-fourteen-pt': resumePageBounds.formatting.bodyFontSize == 14,
+
+      'page-a4':resumePageBounds.formatting.pageFormat == 'a4',
+      'page-us':resumePageBounds.formatting.pageFormat == 'latter',
+
+      'line-height-14': resumePageBounds.formatting.textSpacing == 14,
+      'line-height-15': resumePageBounds.formatting.textSpacing == 15,
+      'line-height-16': resumePageBounds.formatting.textSpacing == 16,
+      'line-height-17': resumePageBounds.formatting.textSpacing == 17,
+      'line-height-18': resumePageBounds.formatting.textSpacing == 18,
+      'line-height-19': resumePageBounds.formatting.textSpacing == 19,
+      'line-height-20': resumePageBounds.formatting.textSpacing == 20,
+
+      'line-height-21': resumePageBounds.formatting.textSpacing == 21,
+      'line-height-22': resumePageBounds.formatting.textSpacing == 22,
+      'line-height-23': resumePageBounds.formatting.textSpacing == 23,
+      'line-height-24': resumePageBounds.formatting.textSpacing == 24,
+      'line-height-25': resumePageBounds.formatting.textSpacing == 25,
+      'line-height-26': resumePageBounds.formatting.textSpacing == 26,
+      'line-height-27': resumePageBounds.formatting.textSpacing == 27,
+      'line-height-28': resumePageBounds.formatting.textSpacing == 28,
+      'line-height-29': resumePageBounds.formatting.textSpacing == 29,
+      'line-height-30': resumePageBounds.formatting.textSpacing == 30,
+      'line-height-31': resumePageBounds.formatting.textSpacing == 31,
+      'line-height-32': resumePageBounds.formatting.textSpacing == 32,
+      'line-height-33': resumePageBounds.formatting.textSpacing == 33,
+      'line-height-34': resumePageBounds.formatting.textSpacing == 34,
+      'line-height-35': resumePageBounds.formatting.textSpacing == 35,
+      'line-height-36': resumePageBounds.formatting.textSpacing == 36,
+      'line-height-37': resumePageBounds.formatting.textSpacing == 37,
+      'line-height-38': resumePageBounds.formatting.textSpacing == 38,
+      'line-height-39': resumePageBounds.formatting.textSpacing == 39,
+      'line-height-40': resumePageBounds.formatting.textSpacing == 40,
+      'line-height-41': resumePageBounds.formatting.textSpacing == 41,
+      'line-height-42': resumePageBounds.formatting.textSpacing == 42,
+      'line-height-43': resumePageBounds.formatting.textSpacing == 43,
+      'line-height-44': resumePageBounds.formatting.textSpacing == 44,
+      'line-height-45': resumePageBounds.formatting.textSpacing == 45,
+
+
+
+
+
+
+      'font-lora': resumePageBounds.fontFamily == 'lora',
+      'font-Quicksand': resumePageBounds.fontFamily == 'Quicksand',
+      'font-Comfortaa': resumePageBounds.fontFamily == 'Comfortaa',
+      'font-Parisienne': resumePageBounds.fontFamily == 'Parisienne',
+      'font-Caveat': resumePageBounds.fontFamily == 'Caveat',
+      'font-Cormorant': resumePageBounds.fontFamily == 'Cormorant',
+      'font-Patrick': resumePageBounds.fontFamily == 'Patrick',
+      'font-Gabriela': resumePageBounds.fontFamily == 'Gabriela',
+      'font-IBM': resumePageBounds.fontFamily == 'IBM',
+      'font-Ubuntu': resumePageBounds.fontFamily == 'Ubuntu',
+      'font-Merriweather': resumePageBounds.fontFamily == 'Merriweather',
+      'font-Source': resumePageBounds.fontFamily == 'Source',
+      'font-Rhodium': resumePageBounds.fontFamily == 'Rhodium',
+      'font-Montserrat': resumePageBounds.fontFamily == 'Montserrat',
+      'font-Raleway': resumePageBounds.fontFamily == 'Raleway',
+      'font-Roboto': resumePageBounds.fontFamily == 'Roboto',
+      'font-Radley': resumePageBounds.fontFamily == 'Radley'
+      
+
+
+      }" [style.line-height]="resumePageBounds.formatting.textSpacing + 'px'"
+    [style.color]="resumePageBounds.colors.bodyFontColor" [style.border-color]="resumePageBounds.colors.borderColor"
+    [style.border-width]="resumePageBounds.formatting.borderWidth + 'px'" [style.border-style]="'solid'">
+
+    <div class="top-cv " id="cv-page-formate"  #scroll>
+      <div class="container-fuid" id="box"
+          
+      >
+
+        <div id="profile"
+        [style.padding-top]="resumePageBounds.formatting.verticalMargin + 'mm'"
+        [style.padding-bottom]="5 + 'mm'"
+          [style.background]="resumePageBounds.colors.headerBackground"
+          [style.padding-right]="resumePageBounds.formatting.horizontalMargin + 'mm'"
+          [style.padding-left]="resumePageBounds.formatting.horizontalMargin+ 'mm'"
+          [style.color]="resumePageBounds.colors.headerColor"
+          [ngClass]="{'cv-text-left': resumePageBounds.headerLayout == 1 , 'cv-text-center': resumePageBounds.headerLayout == 2, 'cv-text-right': resumePageBounds.headerLayout == 3 }"
+          [class.justify-content-to-right]="resumePageBounds.enablePicture && resumePageBounds.image && resumePageBounds.headerLayout == 3">
+          <div class="left-side-name">
+
+            <div class="name" [style.font-size]="resumePageBounds.formatting.headerFontSize+'pt'"
+              [style.line-height]="resumePageBounds.formatting.headerLineSize + 'px'"
+              *ngIf="personalDetails?.name?.length > 2">
+              <ng-container *ngIf="resumePageBounds.enableTitlePrefix">{{personalDetails?.namePrefix}}.</ng-container>
+              {{personalDetails?.name}}
+              <br> {{jobTitle.value}}
+            </div>
+
+            <div class="details">
+
+              <span class="address" [style.font-size]="resumePageBounds.formatting.headerFontSize+'pt'"
+                [style.line-height]="resumePageBounds.formatting.headerLineSize + 'px'">
+                <span class="icon-location"
+                  *ngIf="resumePageBounds.displayIcons && personalDetails?.address?.length > 1"></span>
+                <span *ngIf="personalDetails?.address?.length > 1">
+                  <span *ngIf="personalDetails?.addressLineOne"
+                    [style.font-size]="resumePageBounds.formatting.headerFontSize+'pt'">{{personalDetails?.addressLineOne}}</span>
+                  <br *ngIf="!personalDetails?.addressLineTwo">
+                  <span *ngIf="personalDetails?.addressLineTwo"
+                    [style.font-size]="resumePageBounds.formatting.headerFontSize+'pt'">
+                    <ng-container *ngIf="personalDetails?.addressLineOne">
+                      <br>
+                    </ng-container>
+                    {{personalDetails?.addressLineTwo}}
+                    <br>
+                  </span>
+                  <span *ngIf="personalDetails?.city"
+                    [style.font-size]="resumePageBounds.formatting.headerFontSize+'pt'">
+                    {{personalDetails?.city}}</span>
+                  <span *ngIf="personalDetails?.postalCode"
+                    [style.font-size]="resumePageBounds.formatting.headerFontSize+'pt'">
+                    &nbsp;{{personalDetails?.postalCode}}
+                  </span>
+                  <span *ngIf="personalDetails?.country"
+                    [style.font-size]="resumePageBounds.formatting.headerFontSize+'pt'">
+                    <br>
+                    {{personalDetails?.country}}
+
+                  </span>
+                  <br>
+                </span>
+
+                <span *ngIf="personalDetails?.email" class="gap">
+                  <span class="icon-envelop" *ngIf="resumePageBounds.displayIcons"></span>
+                  <a class="email-cv" [style.font-size]="resumePageBounds.formatting.headerFontSize+'pt'"
+                    [style.line-height]="resumePageBounds.formatting.headerLineSize + 'px'">{{personalDetails?.email}}</a>
+                </span>
+                <span *ngIf="personalDetails?.mobile" class="gap">
+                  <span class="icon-phone" *ngIf="resumePageBounds.displayIcons"></span>
+                  <a class="phone-cv" [style.font-size]="resumePageBounds.formatting.headerFontSize+'pt'"
+                    [style.line-height]="resumePageBounds.formatting.headerLineSize + 'px'">{{personalDetails?.mobile}}</a>
+                </span>
+                <ng-container *ngFor="let item of personalDetails?.customSections;let counter = index">
+                  <span *ngIf="item.value && item.id != 1" class="gap">
+                    <span *ngIf="resumePageBounds.displayIcons" class="{{item.icon}} icon-size"></span>
+                    <span [style.line-height]="resumePageBounds.formatting.headerLineSize + 'px'">{{item.value}}</span>
+                  </span>
+                </ng-container>
+
+              </span>
+            </div>
+
+          </div>
+          <div *ngIf="resumePageBounds.enablePicture && resumePageBounds.image" class="right-side-img" [ngClass]="{'img-circle': resumePageBounds.pictureDisplayStyle == 1,
+          'img-rect': resumePageBounds.pictureDisplayStyle == 3,
+          'img-square': resumePageBounds.pictureDisplayStyle == 2
+         }">
+            <img [src]="resumePageBounds.image" alt="">
+          </div>
+        </div>
+
+
+        <div class="cv-two-one" style="height: 100%;" [style.background]="resumePageBounds.colors.bodyBackground"
+          *ngIf="resumePageBounds.columnType == 1 "
+          [style.padding-right]="resumePageBounds.formatting.horizontalMargin + 'mm'"
+          [style.padding-left]="resumePageBounds.formatting.horizontalMargin+ 'mm'">
+
+          <div  *ngFor="let entry of userContentRepresentation?.entries">
+
+            <!-- profile -->
+            <ng-container *ngIf="entry.name == 'profileSummary'">
+              <div *ngIf="userContentRepresentation?.summaryContentEntered" class="cv-profile cv-width"
+              [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'">
+                <div class="cv-profile-heading">
+                  <h6 class="heading-container"
+                    [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                    <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                      [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                      [style.color]="resumePageBounds.colors.titleColor"
+                      [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry?.data.displayName}}</a>
+                  </h6>
+                </div>
+                <div class="cv-profile-con">
+                  <div class="ql-container ql-snow" style="border-width: 0;">
+                    <div class="ql-editor" [style.color]="resumePageBounds.colors.bodyFontColor"
+                      style="padding-left: 0;" [innerHTML]="entry.data.content  | safeHtml">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+
+            <!-- education -->
+            <ng-container *ngIf="entry.name == 'education'">
+              <div *ngIf="entry?.data.entries.length > 0" class="cv-education cv-width"
+                [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'">
+                <div class="cv-profile-heading">
+                  <h6 class="heading-container"
+                    [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                    <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                      [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                      [style.color]="resumePageBounds.colors.titleColor"
+                      [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry?.data.displayName}}</a>
+                  </h6>
+                </div>
+                <div class="cv-edu-con" *ngFor="let item of entry?.data.entries">
+                  <div class="left-edu">
+                    <span class="edu-date">{{item.startedAt | date:getDateFormat()}} –
+                      <ng-container *ngIf="!item.present">{{item.endedAt | date:getDateFormat()}}
+                      </ng-container>
+                    </span>
+                    <div class="edu-add">
+                    </div>
+                  </div>
+                  <div class="right-edu">
+                    <span class="edu-date edu-schoolName" *ngIf="item.schoolName">{{item.schoolName}}<ng-container
+                      *ngIf="item.studiesName || item.degree">,</ng-container>
+                    &nbsp;</span>
+                  <span class="edu-date edu-schoolName" *ngIf="item.studiesName">{{item.studiesName}} <ng-container
+                      *ngIf="item.degree">,</ng-container>
+                    &nbsp;</span>
+                  <span class="dgree edu-date e-italic">{{item.degree}}</span>
+                  <span class="adu-city">&nbsp;&nbsp;{{item.city}} <ng-container *ngIf="item.city && item.country">,
+                    </ng-container> </span> <span class="adu-con"> {{item.country}}</span>
+  
+                  <div class="ql-container ql-snow edu-dat" style="border-width: 0;">
+                    <div class="ql-editor" [style.color]="resumePageBounds.colors.bodyFontColor"
+                      style="padding-left: 0;" [innerHTML]="item.description  | safeHtml">
+                    </div>
+                  </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </ng-container>
+
+            <!-- work-exp -->
+            <ng-container *ngIf="entry.name == 'professionalExperience'">
+              <div class=" cv-education cv-width" [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                *ngIf="entry?.data.entries.length > 0">
+                <div class="cv-profile-heading">
+                  <h6 class="heading-container"
+                    [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                    <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                      [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                      [style.color]="resumePageBounds.colors.titleColor"
+                      [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry?.data.displayName}}</a>
+                  </h6>
+                </div>
+                <div class="cv-edu-con" *ngFor="let item of entry?.data.entries">
+                  <div class="left-edu">
+                    <span class="edu-date">
+                      {{item.startedAt | date:getDateFormat()}} –
+                      <ng-container *ngIf="!item.present;else presentJob">
+                        {{item.endedAt | date:getDateFormat()}}
+                      </ng-container>
+                      <ng-template #presentJob>Present</ng-template>
+
+                    </span>
+                    <div class="edu-add">
+                    </div>
+                  </div>
+                  <div class="right-edu">
+                    <span class="edu-date edu-schoolName" *ngIf="item.employerName">{{item.employerName}}<ng-container
+                        *ngIf="item.department || item.jobTitle">,</ng-container>
+                      &nbsp;</span>
+                    <span class="edu-date edu-schoolName" *ngIf="item.department">{{item.department}} <ng-container
+                        *ngIf="item.jobTitle">,</ng-container>
+                      &nbsp;</span>
+                    <span class="dgree edu-date e-italic">{{item.jobTitle}}</span>
+                    <span class="adu-city">&nbsp;&nbsp;{{item.city}} <ng-container *ngIf="item.city && item.country">,
+                      </ng-container> </span> <span class="adu-con"> {{item.country}}</span>
+
+                    <div class="ql-container ql-snow edu-dat" style="border-width: 0;">
+                      <div class="ql-editor" [style.color]="resumePageBounds.colors.bodyFontColor"
+                        style="padding-left: 0;" [innerHTML]="item.description  | safeHtml">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+
+
+            <!-- skills -->
+            <ng-container *ngIf="entry.name == 'skills'">
+              <div class="cv-profile cv-width" [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                *ngIf="entry?.data.entries.length > 0">
+                <div class="cv-profile-heading">
+                  <h6 class="heading-container"
+                    [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                    <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                      [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                      [style.color]="resumePageBounds.colors.titleColor"
+                      [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry?.data.displayName}}</a>
+                  </h6>
+                </div>
+                <div class="cv-profile-con">
+                  <ng-container *ngFor="let item of entry?.data.entries">
+                    <div class="cv-bl">
+                      <div class="bullet"></div>
+                      <span>{{item.name}} <ng-container *ngIf="item.showSkillLevel"><span
+                            class="name-level">({{getSkillLevelDescription(item.level)}})</span></ng-container></span>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </ng-container>
+
+            <!-- Languages -->
+            <ng-container *ngIf="entry.name == 'language'">
+              <div class="cv-profile cv-width" [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                *ngIf="entry?.data.entries.length > 0">
+                <div class="cv-profile-heading">
+                  <h6 class="heading-container"
+                    [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                    <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                      [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                      [style.color]="resumePageBounds.colors.titleColor"
+                      [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry?.data.displayName}}</a>
+                  </h6>
+                </div>
+                <div class="cv-profile-con-language">
+                  <ng-container *ngFor="let item of entry?.data.entries">
+                    <div class="cv-bl">
+                      <div class="bullet"></div>
+                      <span>{{item.name}}</span><span *ngIf="item.description"
+                        style="font-weight: 300;">:&nbsp;{{item.description}}</span>
+                    </div>
+                    <div *ngIf="item.showDetails" class="language-detail-container">
+                      <span *ngIf="item.writingSkills">Read/Write Level : &nbsp;
+                        {{getLanguageLevelString(item.writingSkills)}}</span>
+                      <span *ngIf="item.speakingSkills">&nbsp; Speaking Level : &nbsp;
+                        {{getLanguageLevelString(item.speakingSkills)}}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </ng-container>
+
+
+            <!--Cutom Sections-->
+            <ng-container *ngIf="entry.type == 'customSections'">
+              <div
+              style="padding-left: 0;"
+              class="cv-profile double-columns single-column-custom-sections"
+                [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                *ngIf="entry?.data?.data?.length > 0">
+                <div class="cv-profile-heading">
+                  <h6 class="heading-container"
+                    [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                    <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                      [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                      [style.color]="resumePageBounds.colors.titleColor"
+                      [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry.name}}</a>
+                  </h6>
+                </div>
+                <div class="cv-edu-con" *ngFor="let detail of entry?.data.data">
+                  <div class="left-edu">
+                    <span class="edu-date">{{detail.title}} – {{detail.subtitle}}</span>
+                    <div class="edu-add">
+                      <span class="adu-city" *ngIf="detail.city">{{detail.city}}, </span>
+                      <span class="adu-con"> {{detail.country}}</span>
+                    </div>
+                  </div>
+                  <div class="right-edu">
+                    <span class="edu-date edu-schoolName">{{detail.date}}</span>
+                    <div class="ql-container ql-snow edu-dat" style="border-width: 0;">
+                      <div class="ql-editor" [style.color]="resumePageBounds.colors.bodyFontColor"
+                        style="padding-left: 0;" [innerHTML]="detail.description  | safeHtml">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+              </div>
+            </ng-container>
+
+
+          </div>
+
+
+        </div>
+
+        <div class="cv-two-column" id="twoCol" *ngIf="resumePageBounds.columnType == 2">
+
+          <div class="left-items" id="leftItem" [style.background]="resumePageBounds.columns.leftBackground "
+            [style.color]="resumePageBounds.columns.leftFontColor"
+            [style.width]="resumePageBounds.columns.leftWidth + '%'">
+
+            <ng-container *ngFor="let entry of leftItems; let i = index">
+
+              <!-- profile -->
+
+              <ng-container *ngIf="entry.name == 'profileSummary'">
+                <div *ngIf="userContentRepresentation?.summaryContentEntered"
+                  [style.padding-left]="resumePageBounds.formatting.horizontalMargin+ 'mm'" [style.width]="'100%'"
+                  class="cv-profile double-columns"
+                  [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'">
+                  <div class="cv-profile-heading">
+                    <h6 class="heading-container"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                      <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                        [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                        [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                        [style.color]="resumePageBounds.colors.titleColor"
+                        [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry?.data.displayName}}</a>
+                    </h6>
+                  </div>
+                  <div class="cv-profile-con">
+                    <div class="ql-container ql-snow" style="border-width: 0;">
+                      <div class="ql-editor" [style.color]="resumePageBounds.colors.bodyFontColor"
+                        style="padding-left: 0;" [innerHTML]="entry.data.content  | safeHtml">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+
+              <!-- education -->
+              <ng-container *ngIf="entry.name == 'education'">
+                <div *ngIf="entry?.data.entries.length > 0" class="cv-education double-columns" [style.width]="'100%'"
+                  [style.padding-left]="resumePageBounds.formatting.horizontalMargin+ 'mm'"
+                  [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'">
+                  <div class="cv-profile-heading">
+                    <h6 class="heading-container"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                      <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                        [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                        [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                        [style.color]="resumePageBounds.colors.titleColor"
+                        [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry?.data.displayName}}</a>
+                    </h6>
+                  </div>
+                  <div class="cv-edu-con" *ngFor="let item of entry?.data.entries">
+                    <div class="left-edu edu-display-two-columns">
+                      <span class="edu-date date">{{item.startedAt | date:getDateFormat()}} –
+                        <ng-container *ngIf="!item.present">{{item.endedAt | date:getDateFormat()}}
+                        </ng-container>
+                      </span>
+                      <div class="edu-add">
+                        <span class="edu-date edu-schoolName" *ngIf="item.schoolName">{{item.schoolName}}<ng-container 
+                          *ngIf="item.studiesName || item.degree">,</ng-container>
+                      &nbsp;</span>
+                    <span class="edu-date edu-schoolName" *ngIf="item.studiesName">{{item.studiesName}} <ng-container
+                        *ngIf="item.degree">,</ng-container>
+                      &nbsp;</span>
+                    <span class="dgree edu-date e-italic">{{item.degree}}</span>
+                    <span class="adu-city">&nbsp;&nbsp;{{item.city}} <ng-container *ngIf="item.city && item.country">,
+                      </ng-container> </span> <span class="adu-con"> {{item.country}}</span>
+                      </div>
+                    </div>
+                    <div class="right-edu">
+              
+
+                      <div class="ql-container ql-snow edu-dat" style="border-width: 0;">
+                        <div class="ql-editor" [style.color]="resumePageBounds.colors.bodyFontColor"
+                          style="padding-left: 0;" [innerHTML]="item.description  | safeHtml">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </ng-container>
+
+              <!-- work-exp -->
+              <ng-container *ngIf="entry.name == 'professionalExperience'">
+                <div class="cv-education double-columns" [style.width]="'100%'"
+                  [style.padding-left]="resumePageBounds.formatting.horizontalMargin+ 'mm'"
+                  [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  *ngIf="entry?.data.entries.length > 0">
+                  <div class="cv-profile-heading">
+                    <h6 class="heading-container"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                      <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                        [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                        [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                        [style.color]="resumePageBounds.colors.titleColor"
+                        [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry?.data.displayName}}</a>
+                    </h6>
+                  </div>
+                  <div class="cv-edu-con" *ngFor="let item of entry?.data.entries">
+                    <div class="left-edu edu-display-two-columns">
+                      <span class="edu-date date">
+                        {{item.startedAt | date:getDateFormat()}} –
+                        <ng-container *ngIf="!item.present;else presentJob">
+                          {{item.endedAt | date:getDateFormat()}}
+                        </ng-container>
+                        <ng-template #presentJob>Present</ng-template>
+                      </span>
+                      <div class="edu-add">
+
+                        <span class="edu-date edu-schoolName" *ngIf="item.employerName">{{item.employerName}}
+                          <ng-container *ngIf="item.department || item.jobTitle">,</ng-container>
+                          &nbsp;</span>
+                        <span class="edu-date edu-schoolName" *ngIf="item.department">{{item.department}} <ng-container
+                            *ngIf="item.jobTitle">,</ng-container>
+                          &nbsp;</span>
+                        <span class="dgree edu-date e-italic">{{item.jobTitle}}</span>
+                        <span class="adu-city">&nbsp;&nbsp;{{item.city}} <ng-container *ngIf="item.city && item.country">,
+                          </ng-container> </span> <span class="adu-con"> {{item.country}}</span>
+                      </div>
+                    </div>
+                    <div class="right-edu">
+
+
+
+                      <div class="ql-container ql-snow edu-dat" style="border-width: 0;">
+                        <div class="ql-editor" [style.color]="resumePageBounds.colors.bodyFontColor"
+                          style="padding-left: 0;" [innerHTML]="item.description  | safeHtml">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+
+              <!-- skills -->
+              <ng-container *ngIf="entry.name == 'skills'">
+                <div class="cv-profile double-columns" [style.width]="'100%'"
+                  [style.padding-left]="resumePageBounds.formatting.horizontalMargin+ 'mm'"
+                  [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  *ngIf="entry?.data.entries.length > 0">
+                  <div class="cv-profile-heading">
+                    <h6 class="heading-container"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                      <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                        [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                        [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                        [style.color]="resumePageBounds.colors.titleColor"
+                        [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry?.data.displayName}}</a>
+                    </h6>
+                  </div>
+                  <div class="cv-profile-con">
+                    <ng-container *ngFor="let item of entry?.data.entries">
+                      <div class="cv-bl">
+                        <div class="bullet"></div>
+                        <span>{{item.name}} <ng-container *ngIf="item.showSkillLevel"><span
+                              class="name-level">({{item.level}})</span></ng-container></span>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </ng-container>
+
+              <!-- Languages -->
+              <ng-container *ngIf="entry.name == 'language'">
+                <div class="cv-profile double-columns" [style.width]="'100%'"
+                  [style.padding-left]="resumePageBounds.formatting.horizontalMargin+ 'mm'"
+                  [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  *ngIf="entry?.data.entries.length > 0">
+                  <div class="cv-profile-heading">
+                    <h6 class="heading-container"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                      <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                        [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                        [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                        [style.color]="resumePageBounds.colors.titleColor"
+                        [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry?.data.displayName}}</a>
+                    </h6>
+                  </div>
+                  <div class="cv-profile-con-language">
+                    <ng-container *ngFor="let item of entry?.data.entries">
+                      <div class="cv-bl">
+                        <div class="bullet"></div>
+                        <span>{{item.name}}</span><span *ngIf="item.description"
+                          style="font-weight: 300;">&nbsp;&nbsp;({{item.description}})</span>
+                      </div>
+                      <div *ngIf="item.showDetails" class="language-detail-container">
+                        <span *ngIf="item.writingSkills">Read/Write Level : &nbsp;
+                          {{getLanguageLevelString(item.writingSkills)}}</span>
+                        <span *ngIf="item.speakingSkills">&nbsp; Speaking Level : &nbsp;
+                          {{getLanguageLevelString(item.speakingSkills)}}</span>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </ng-container>
+
+              <!--Cutom Sections-->
+              <ng-container *ngIf="entry.type == 'customSections'">
+                <div class="cv-profile double-columns"
+                  [style.padding-left]="resumePageBounds.formatting.horizontalMargin+ 'mm'"
+                  [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'" [style.width]="'100%'"
+                  *ngIf="entry?.data.data.length > 0">
+
+                  <div class="cv-profile-heading">
+                    <h6 class="heading-container"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                      <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                        [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                        [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                        [style.color]="resumePageBounds.colors.titleColor"
+                        [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry.name}}</a>
+                    </h6>
+                  </div>
+                  <div class="cv-edu-con" *ngFor="let detail of entry?.data.data">
+                    <div class="left-edu">
+                      <span class="edu-date">{{detail.title}} – {{detail.subtitle}}</span>
+                      <div class="edu-add">
+                        <span class="adu-city" *ngIf="detail.city">{{detail.city}}, </span>
+                        <span class="adu-con"> {{detail.country}}</span>
+                      </div>
+                    </div>
+                    <div class="right-edu">
+                      <span class="edu-date edu-schoolName">{{detail.date}}</span>
+                      <div class="ql-container ql-snow edu-dat" style="border-width: 0;">
+                        <div class="ql-editor" [style.color]="resumePageBounds.colors.bodyFontColor"
+                          style="padding-left: 0;" [innerHTML]="detail.description  | safeHtml">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+
+          </div>
+          <div class="right-items" id="rightItem" [style.background]="resumePageBounds.columns.rightBackground "
+            [style.color]="resumePageBounds.columns.rightFontColor"
+            [style.width]="resumePageBounds.columns.rightWidth + '%'">
+
+            <ng-container *ngFor="let entry of rightItems; let i = index">
+
+              <!-- profile -->
+
+              <ng-container *ngIf="entry.name == 'profileSummary'">
+                <div *ngIf="userContentRepresentation?.summaryContentEntered"
+                  [style.padding-right]="resumePageBounds.formatting.horizontalMargin + 'mm'" [style.width]="'100%'"
+                  class="cv-profile double-columns"
+                  [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'">
+                  <div class="cv-profile-heading">
+                    <h6 class="heading-container"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                      <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                        [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                        [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                        [style.color]="resumePageBounds.colors.titleColor"
+                        [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry?.data.displayName}}</a>
+                    </h6>
+                  </div>
+                  <div class="cv-profile-con">
+                    <div class="ql-container ql-snow" style="border-width: 0;">
+                      <div class="ql-editor" [style.color]="resumePageBounds.colors.bodyFontColor"
+                        style="padding-left: 0;" [innerHTML]="entry.data.content  | safeHtml">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+
+              <!-- education -->
+              <ng-container *ngIf="entry.name == 'education'">
+                <div *ngIf="entry?.data.entries.length > 0" class="cv-education double-columns"
+                  [style.padding-right]="resumePageBounds.formatting.horizontalMargin + 'mm'" [style.width]="'100%'"
+                  [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'">
+                  <div class="cv-profile-heading">
+                    <h6 class="heading-container"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                      <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                        [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                        [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                        [style.color]="resumePageBounds.colors.titleColor"
+                        [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry?.data.displayName}}</a>
+                    </h6>
+                  </div>
+                  <div class="cv-edu-con" *ngFor="let item of entry?.data.entries">
+                    <div class="left-edu edu-display-two-columns">
+                      <span class="edu-date date">{{item.startedAt | date:getDateFormat()}} –
+                        <ng-container *ngIf="!item.present">{{item.endedAt | date:getDateFormat()}}
+                        </ng-container>
+                      </span>
+                      <div class="edu-add">
+                        <span class="edu-date edu-schoolName" *ngIf="item.schoolName">{{item.schoolName}}
+                          <ng-container *ngIf="item.studiesName || item.degree">,</ng-container>
+                          &nbsp;</span>
+                        <span class="edu-date edu-schoolName" *ngIf="item.studiesName">{{item.studiesName}} <ng-container
+                            *ngIf="item.degree">,</ng-container>
+                          &nbsp;</span>
+                        <span class="dgree edu-date e-italic">{{item.degree}}</span>
+                        <span class="adu-city">&nbsp;&nbsp;{{item.city}} <ng-container *ngIf="item.city && item.country">,
+                          </ng-container> </span> <span class="adu-con"> {{item.country}}</span>
+                      </div>
+                    </div>
+                    <div class="right-edu">
+                
+
+                      <div class="ql-container ql-snow edu-dat" style="border-width: 0;">
+                        <div class="ql-editor" [style.color]="resumePageBounds.colors.bodyFontColor"
+                          style="padding-left: 0;" [innerHTML]="item.description  | safeHtml">
+                        </div>
+                      </div>
+
+
+
+
+                    </div>
+                  </div>
+                </div>
+
+              </ng-container>
+
+              <!-- work-exp -->
+              <ng-container *ngIf="entry.name == 'professionalExperience'">
+                <div class=" cv-education double-columns" [style.width]="'100%'"
+                  [style.padding-right]="resumePageBounds.formatting.horizontalMargin + 'mm'"
+                  [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  *ngIf="entry?.data.entries.length > 0">
+                  <div class="cv-profile-heading">
+                    <h6 class="heading-container"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                      <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                        [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                        [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                        [style.color]="resumePageBounds.colors.titleColor"
+                        [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry?.data.displayName}}</a>
+                    </h6>
+                  </div>
+                  <div class="cv-edu-con" *ngFor="let item of entry?.data.entries">
+                    <div class="left-edu edu-display-two-columns">
+                      <span class="edu-date date">
+                        {{item.startedAt | date:getDateFormat()}} –
+                        <ng-container *ngIf="!item.present;else presentJob">
+                          {{item.endedAt | date:getDateFormat()}}
+                        </ng-container>
+                        <ng-template #presentJob>Present</ng-template>
+                      </span>
+                      <div class="edu-add">
+                        <span class="edu-date edu-schoolName" *ngIf="item.employerName">{{item.employerName}}
+                          <ng-container *ngIf="item.department || item.jobTitle">,</ng-container>
+                          &nbsp;</span>
+                        <span class="edu-date edu-schoolName" *ngIf="item.department">{{item.department}} <ng-container
+                            *ngIf="item.jobTitle">,</ng-container>
+                          &nbsp;</span>
+                        <span class="dgree edu-date e-italic">{{item.jobTitle}}</span>
+                        <span class="adu-city">&nbsp;&nbsp;{{item.city}} <ng-container *ngIf="item.city && item.country">,
+                          </ng-container> </span> <span class="adu-con"> {{item.country}}</span>
+                      </div>
+                    </div>
+                    <div class="right-edu">
+
+
+
+
+                      <div class="ql-container ql-snow edu-dat" style="border-width: 0;">
+                        <div class="ql-editor" [style.color]="resumePageBounds.colors.bodyFontColor"
+                          style="padding-left: 0;" [innerHTML]="item.description  | safeHtml">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+
+              <!-- skills -->
+              <ng-container *ngIf="entry.name == 'skills'">
+                <div class="cv-profile double-columns" [style.width]="'100%'"
+                  [style.padding-right]="resumePageBounds.formatting.horizontalMargin + 'mm'"
+                  [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  *ngIf="entry?.data.entries.length > 0">
+                  <div class="cv-profile-heading">
+                    <h6 class="heading-container"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                      <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                        [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                        [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                        [style.color]="resumePageBounds.colors.titleColor"
+                        [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry?.data.displayName}}</a>
+                    </h6>
+                  </div>
+                  <div class="cv-profile-con">
+                    <ng-container *ngFor="let item of entry?.data.entries">
+                      <div class="cv-bl">
+                        <div class="bullet"></div>
+                        <span>{{item.name}} <ng-container *ngIf="item.showSkillLevel"><span
+                              class="name-level">({{item.level}})</span></ng-container></span>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </ng-container>
+
+              <!-- Languages -->
+              <ng-container *ngIf="entry.name == 'language'">
+                <div class="cv-profile double-columns" [style.width]="'100%'"
+                  [style.padding-right]="resumePageBounds.formatting.horizontalMargin + 'mm'"
+                  [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  *ngIf="entry?.data.entries.length > 0">
+                  <div class="cv-profile-heading">
+                    <h6 class="heading-container"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                      <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                        [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                        [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                        [style.color]="resumePageBounds.colors.titleColor"
+                        [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry?.data.displayName}}</a>
+                    </h6>
+                  </div>
+                  <div class="cv-profile-con-language">
+                    <ng-container *ngFor="let item of entry?.data.entries">
+                      <div class="cv-bl">
+                        <div class="bullet"></div>
+                        <span>{{item.name}}</span><span *ngIf="item.description"
+                          style="font-weight: 300;">&nbsp;&nbsp;({{item.description}})</span>
+                      </div>
+                      <div *ngIf="item.showDetails" class="language-detail-container">
+                        <div *ngIf="item.writingSkills" class="lang-left">Read/Write Level : &nbsp;
+                          <span>{{getLanguageLevelString(item.writingSkills)}}</span> </div>
+
+                        <div *ngIf="item.speakingSkills" class="lang-right">&nbsp; Speaking Level : &nbsp;
+                          <span>{{getLanguageLevelString(item.speakingSkills)}}</span></div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </ng-container>
+
+              <!--Cutom Sections-->
+              <ng-container *ngIf="entry.type == 'customSections'">
+                <div class="cv-profile double-columns"
+                  [style.padding-right]="resumePageBounds.formatting.horizontalMargin + 'mm'"
+                  [style.margin-top]="resumePageBounds.formatting.sectionSpacing + 'px'" [style.width]="'100%'"
+                  [style.margin-bottom]="resumePageBounds.formatting.sectionSpacing + 'px'"
+                  *ngIf="entry?.data.data.length > 0">
+
+                  <div class="cv-profile-heading">
+                    <h6 class="heading-container"
+                      [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment">
+                      <a class="cv-p-h" [style.border-width]="resumePageBounds.formatting.sectionLineThickness + 'px'"
+                        [style.justify-content]="resumePageBounds.formatting.sectionLineAlignment"
+                        [style.width]="resumePageBounds.formatting.sectionLineWidth + '%'"
+                        [style.color]="resumePageBounds.colors.titleColor"
+                        [style.font-size]="resumePageBounds.formatting.titleFontSize + 'pt'">{{entry.name}}</a>
+                    </h6>
+                  </div>
+                  <div class="cv-edu-con" *ngFor="let detail of entry?.data.data">
+                    <div class="left-edu">
+                      <span class="edu-date">{{detail.title}} – {{detail.subtitle}}</span>
+                      <div class="edu-add">
+                        <span class="adu-city" *ngIf="detail.city">{{detail.city}}, </span>
+                        <span class="adu-con"> {{detail.country}}</span>
+                      </div>
+                    </div>
+                    <div class="right-edu">
+                      <span class="edu-date edu-schoolName">{{detail.date}}</span>
+                      <div class="ql-container ql-snow edu-dat" style="border-width: 0;">
+                        <div class="ql-editor" [style.color]="resumePageBounds.colors.bodyFontColor"
+                          style="padding-left: 0;" [innerHTML]="detail.description  | safeHtml">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+
+          </div>
+
+        </div>
+
+          <div  [style.padding-bottom]="resumePageBounds.formatting.verticalMargin+ 'mm'">
+
+          </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

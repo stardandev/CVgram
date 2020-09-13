@@ -1,0 +1,127 @@
+[
+    {
+      "id": 1,
+      "frValue": "Emploi Titre",
+      "enValue": "Job title",
+      "icon" : "icon-profile",
+      "value": "jobTitle"
+    },
+    {
+      "id": 2,
+      "frValue": "LinkedIn",
+      "enValue": "LinkedIn",
+      "icon" : "icon-linkedin2",
+      "value": "linkedIn"
+    },
+    {
+      "id": 3,
+      "frValue": "Date de naissance",
+      "enValue": "Date of Birth",
+      "icon" : "icon-table2",
+      "value": "dateOfBirth"
+    },
+    {
+      "id": 4,
+      "frValue": "Website",
+      "enValue": "Website",
+      "icon" : "icon-sphere",
+      "value": "website"
+    },
+    {
+      "id": 5,
+      "frValue": "Medium",
+      "enValue": "Medium",
+      "icon" : "icon-medium",
+      "value": "medium"
+    },
+    {
+      "id": 6,
+      "frValue": "Github",
+      "enValue": "Github",
+      "icon" : "icon-github",
+      "value": "github"
+    },
+    {
+      "id": 7,
+      "frValue": "Stackoverflow",
+      "enValue": "Stackoverflow",
+      "icon" : "icon-stackoverflow",
+      "value": "stackoverflow"
+    },
+    {
+      "id": 8,
+      "frValue": "Skype",
+      "enValue": "Skype",
+      "icon" : "icon-skype",
+      "value": "skype"
+    },
+    {
+      "id": 9,
+      "frValue": "Discord",
+      "enValue": "Discord",
+      "icon" : "icon-discord",
+      "value": "discord"
+    },
+    {
+      "id": 11,
+      "frValue": "Behance",
+      "enValue": "Behance",
+      "icon" : "icon-behance",
+      "value": "behance"
+    },
+    {
+      "id": 12,
+      "frValue": "Nationalité",
+      "enValue": "Nationality",
+      "icon" : "icon-flag",
+      "value": "nationality"
+    },
+    {
+      "id": 13,
+      "frValue": "État civil",
+      "enValue": "Marital Status",
+      "icon" : "icon-spinner9",
+      "value": "maritalStatus"
+    },
+    {
+      "id": 14,
+      "frValue": "Twitter",
+      "enValue": "Twitter",
+      "icon" : "icon-twitter",
+      "value": "twitter"
+    },
+    {
+      "id": 15,
+      "frValue": "Quora",
+      "enValue": "Quora",
+      "icon" : "icon-quora",
+      "value": "quora"
+    },
+    {
+      "id": 16,
+      "frValue": "Facebook",
+      "enValue": "Facebook",
+      "icon" : "icon-facebook",
+      "value": "facebook"
+    },
+    {
+      "id": 17,
+      "frValue": "Instagram",
+      "enValue": "Instagram",
+      "icon" : "icon-instagram",
+      "value": "instagram"
+    },
+    {
+      "id": 18,
+      "frValue": "WeChat",
+      "enValue": "WeChat",
+      "icon" : "icon-wechat",
+      "value": "wechat"
+    },
+    {
+      "id": 19,
+      "frValue": "Permis de conduire",
+      "enValue": "Driving License",
+      "icon" : "icon-compass2",
+      "value": "drivingLicense"
+    }]

@@ -1,0 +1,57 @@
+
+@import '../../../../../assets/styles/custom-styles.scss';
+
+// btn
+.btn-all {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+	padding: 7px 15px;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: normal;
+    color: #484848;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: none;
+    @include border-radius(4px);
+    background: #fff;
+    -webkit-transition: .1s ease-in;
+    transition: all .1s ease-in;
+    z-index: 2;
+    margin: 5px;
+    border: 1px solid $secondary;
+}
+.btn-sign{
+    background-color: $secondary;
+	color: $white;
+	
+	&:hover{
+		background-color:transparent;
+		color: $black;
+		border: 1px solid $secondary;
+	}
+}
+
+.btn-login{
+	&:hover{
+		background-color: $secondary;
+		color: $white;
+	}
+}
+
+.example-card {
+   max-width : 470px;
+  }
+  .dialog-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .form-field-gap {
+      padding-right: 35px;
+  }
+  mat-form-field{
+    width: 100%;;
+  }

@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+
+
+$font-primary: 'Poppins',Arial, sans-serif;
+
+$white: #fff;
+$black: #000000;
+$darken: #232931;
+$gray-4: #f4f4f4;
+$gray-800: #343a40;
+$bg-light:#f4f4f4;
+$primary: #3e64ff;
+$secondary: #005C97;
+
+$btn-back:#1DBFAF;
+
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+        -ms-border-radius: $radius;
+            border-radius: $radius;
+  }

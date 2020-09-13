@@ -1,0 +1,15 @@
+<div class="dialog-padding">
+    <h2 mat-dialog-title class="dialog-title"> Confirm </h2>
+    <mat-dialog-content>
+        <div class="custom-section-header-container">
+            <p>Make sure you dont have any unsaved changes before you leave this page.</p>
+
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button class="btn btn-sign btn-all cursor-pointer" (click)="closeModal(0)">Cancel</button>
+        <button class="btn btn-sign btn-all cursor-pointer" (click)="closeModal(1)" cdkFocusInitial>Save Changes</button>
+        <button class="btn btn-sign btn-all cursor-pointer" (click)="closeModal(2)">Discard Changes</button>
+    </mat-dialog-actions>
+
+</div>

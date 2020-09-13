@@ -1,0 +1,52 @@
+<div class="email-opreation">
+  <div class="email-section">
+
+    <div class="heading-email ">
+      <div class="form-inline">
+        <div class="col-md-12 form-group">
+            <label class=" col-form-label" for="name" style="font-size: 14px;">Document Name</label> &nbsp; &nbsp;
+            <input type="text" class="form-control" [(ngModel)]="emailLetter.name" >
+        </div>
+    </div>
+    </div>
+    <div class="row">
+      <div class=" col-md-2 col-lg-2 col-sm-12 col-xs-12">
+    
+      </div>
+      <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+
+        <div class="display-box email-display-box">
+          <div class="dis-box">
+            <div class="top-cv">
+              <div class="email-box">
+
+                <div class="de-s">
+                  <input type="email" class="form-control" [(ngModel)]="emailLetter.header"  placeholder="Dear Sir">
+  
+                </div>
+                <div class="email-body">
+                  <textarea class="form-control" [(ngModel)]="emailLetter.body" rows="3"  cols="10" placeholder="Body"></textarea>      
+                </div>
+                <div class="best-re">
+                  <input type="email" class="form-control" [(ngModel)]="emailLetter.footer" placeholder="Best Regards">
+  
+                </div>
+
+                <div class="bot-btn">
+                  <a class="btn btn-cv" (click)="saveEmailLetter()">
+                    {{emailLetter.id ? 'Update' : 'Save'}}
+                  </a>
+                  <a class="btn btn-cv" (click)="copyToClipboard()">
+                    Copy to Clipboard
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

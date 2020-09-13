@@ -1,0 +1,190 @@
+{
+    "header" : {
+        "Menu" : "Menu",
+        "Home" : "Home",
+        "AboutUs" : "About Us",
+        "SignIn" : "Sign In",
+        "SignUp" : "Sign Up",
+        "LogOut": "LOGOUT",
+        "login": "Log In"
+    },
+    "landing" : {
+        "intro" : {
+            "title" : "The Online Resume Builder You Deserve",
+            "caption" : "Cv / Resume",
+            "description" : "Creating a Professional Resume and Cover Letter Has Never Been So Easy"
+        },
+        "section1": {
+            "title" : "See how we improve your chances of getting hired!",
+            "description" : "Making a resume is the first step of any job search. Not sure how to make a resume? Our online resume builder gives you free resume templates to follow."
+        },
+        "section2" : {
+            "title" : "Benefits of using a resume builder",
+            "details1" : {
+                "title" : "A Resume Layout That Stands Out",
+                "description" : "A creative, professional layout can grab a recruiter's attention. Our resume layout optimizer makes sure all your content is aligned and organized so your resume looks like a work of art."
+            },
+            "details2" : {
+                "title" : "Live Feedback to Improve Your Content",
+                "description" : "If you aren't sure how to write a resume, don't worry. Our content optimizer analyzes your resume and gives you suggested revisions to increase the quality of your content."
+            },
+            "details3" : {
+                "title" : "Templates Suited to Your Exact Needs",
+                "description" : "Let our free resume templates and cover letter templates do the work for you. Choose from a selection of recruiter-approved layout designs for different job types."
+            },
+            "details4" : {
+                "title" : "Free Cover Letter and Resume Samples",
+                "description" : "Not only do you get to build your resume for free, you also get access to successful resume samples and cover letter examples that you can use for guidance."
+            },
+            "howItWorks" : {
+                "title" : "How it Works",
+                "section1" : {
+                    "title" : "Register in a Flash",
+                    "description" :"It only takes a couple of seconds to start using our online resume builder. The resume creator is offered completely through our website, meaning there is no software to download."
+                },
+                "section2" : {
+                    "title" : "Choose a resume Layout",
+                    "description" :"You get to choose between several design options with our selection of free resume templates. This helps you match your resume to the type of company and position you want."
+                },
+                "section3" : {
+                    "title" : "Develop and Optimize Your Content",
+                    "description" :"Each resume template is organized into major content sections that you fill in while optimization tools guide you through the process. And adding or removing a specific section based on your needs is no problem and you get layout and content suggestions so that your resume looks perfect."
+                },
+                "section4" : {
+                    "title" : "Export and Send",
+                    "description" :"Once your content is finished, you can export your resume in PDF from the free resume builder. Your latest version is saved and you can always go back to make edits. "
+                }
+            }
+        }
+    },
+    "footer" : {
+        "Home" : "Home",
+        "resumeTemplates" : "Resume Templates",
+        "contactUs" : "Contact Us",
+        "details" : {
+            "heading" : "Our Vision is to",
+            "subheading" : "Fight Unemployment",
+            "employerName" : "Company Name",
+            "companyAddress" : "Company Street, City",
+            "copyrighttitle" : "Copyright",
+            "copyrightdesc" : "All Rights Reserved"
+        }
+    },
+    "buttons" : {
+        "getStarted": "Get Strated",
+        "getTemplate" : "Get a Resume Template"
+    },
+    "login" : {
+        "shrtnote" : "Sign up or sign in here and start creating your resume today.",
+        "welcome" : "Welcome to",
+        "description" : "Sign in to an existing user account, or sign up.",
+        "dontHaveAccount" : "don't have an account yet?"
+    },
+    "global" : {
+        "email" : "Email",
+        "requiredError" : "This field is required",
+        "validEmailError" : "It should be valid email address",
+        "password" : "Password",
+        "forgotPassword" : "Forgot Password?",
+        "SignIn" : "Sign In",
+        "SignUp" : "Sign Up",
+        "please" : "Please",
+        "firstName" : "First Name",
+        "lastName" : "Last Name",
+        "mobileNumber" : "Mobile Number",
+        "confirmPassword" : "Confirm Password",
+        "selectTemplate" : "Select this template",
+        "passwordNotMatching" : "Password did not match",
+        "createNew" : "Create New",
+        "creationDate" : "Creation Date",
+        "lastUsed" : "Last Used",
+        "name" : "Name",
+        "description" : "Description",
+        "default" : "Default",
+        "submit": "Submit",
+        "clicktoadd": "Click to add",
+        "toggleDatePicker" : "Add day of the month",
+        "present": "Present",
+        "showDetails" : "Show Levels on resume?",
+        "showSkillLevel" : "Show Skill Level",
+        "continue" : "Continue"
+    },
+    "signUp" : {
+        "shrtnote" : "Sign up or sign in here and start creating your resume today.",
+        "welcome" : "Welcome to",
+        "description" : "Enter your email to get started",
+        "haveAnAccount" : "Already have an account?"
+    },
+    "registration" : {
+        "shrtnote": "You are one step away to complete your registration.",
+        "welcome" : "Welcome to",
+        "description" : "Please fill the details below and submit"
+    },
+    "dashboard" : {
+        "resume" : "CV",
+        "coverLetter" : "Cover Letter",
+        "emailLetter" : "Email Letter",
+        "jobSearch" : "Job Search logbook",
+        "backLink" : "Back to Dashboard"
+    },
+    "forgotPassword": {
+        "description": "Enter your email, We will send you a link to reset your password",
+        "title": "Forgot Password",
+        "chooseNewPassword" : "Choose a new Password",
+        "enterNewPassword" : "Enter your new Password"
+    },
+    "resumeOperations" : {
+        "profileCompleteness" : "Profile Completeness",
+        "personalDetails" : "Personal Details",
+        "profile" : "Profile",
+        "professionalExperience": "Professional Experience",
+        "education": "Education",
+        "languages" : "Languages",
+        "skills": "Skills",
+        "addCustomSection" : "Add Custom Section",
+        "addPhoto": "Add Photo",
+        "deletePhoto" : "Delete Photo"
+    },
+    "resumeDesign" : {
+        "pageLayout" :  {
+            "title" : "Page Layout",
+            "headerLayout" : "Header layout",
+            "picture" : "Picture",
+            "column" : "Column",
+            "singleColumn" : "Single Column",
+            "doubleColumn": "Double Column",
+            "pageFormat" : "Page Format",
+            "dateFormat" : "Date Format",
+            "year" : "Year",
+            "month" : "Month",
+            "separator": "Separator",
+            "displayIcons" : "Display Icons",
+            "short" : "Short",
+            "Long" : "Long",
+            "sectionOrder" : "Section Order",
+            "saveFormat" : "Save Format as new template"
+        },
+        "designTemplate": {
+            "title" : "Design Template"
+        },
+        "formatting" : {
+            "title" : "Formatting",
+            "headerColor" : "Header Color",
+            "headerFontSize": "Header Font size",
+            "titleFontSize" : "Title Font size",
+            "bodyFontSize" : "Body Font size",
+            "borderWidth" : "Border Width",
+            "textSpacing" : "Text Spacing",
+            "sectionSpacing" : "Section Spacing",
+            "horizontalMargin" : "Horizontal Margin",
+            "verticalMargin" : "Vertical Margin",
+            "sectionLine" : "Section Line",
+            "sectionLineWidth" : "Section Line Width",
+            "body" : "Body",
+            "background" : "Background",
+            "font" : "Font",
+            "fontfamily" : "Font Family",
+            "saveFormat" : "Save Format as new template"
+        }   
+    }
+}

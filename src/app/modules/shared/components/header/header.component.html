@@ -1,0 +1,111 @@
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+  <div class="container">
+    <a class="navbar-brand cursor-pointer" (click)="navigateToHome()"><span>Ce</span>evee</a>
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav nav ml-auto site-menu">
+        <li>
+          <a class="cursor-pointer" (click)="navigateToHome()">{{ "header.Home" | translate }}</a>
+        </li>
+        <li>
+          <a class="cursor-pointer" routerLink="/landing">{{ "header.AboutUs" | translate }}</a>
+        </li>
+        <li class="has-children">
+          <a>{{ currentLanguage }} <i class="fas fa-angle-down"></i> </a>
+          <ul class="dropdown arrow-top">
+            <li><a (click)="changeLanguage('en')">English</a></li>
+            <li><a (click)="changeLanguage('fr')">French</a></li>
+          </ul>
+        </li>
+        <ng-container *ngIf="userLoggedIn; else loggedInUser">
+
+          <div class="custom-dropdown">
+            <img class="dropbtn" src="../../../../../assets/account.svg">
+            <div class="custom-dropdown-content">
+              <a (click)="logOut()" class="cursor-pointer">{{"header.LogOut" | translate}}</a>
+            </div>
+          </div>
+
+        </ng-container>
+        <ng-template #loggedInUser>
+          <li (click)="signIn()">
+            <span class="btn btn-sign btn-all">{{
+              "header.login" | translate
+            }}</span>
+          </li>
+          <li (click)="signUp()">
+            <span class="btn btn-login btn-all">{{
+              "header.SignUp" | translate
+            }}</span>
+          </li>
+        </ng-template>
+
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- mobile-nav -->
+<div class="cv-mobile-navbar">
+  <div class="container">
+    <div class="cv-navbar">
+      <div class="nav-cv">
+        <div id="nav-container">
+          <div class="bg"></div>
+          <div class="button" tabindex="0">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </div>
+          <div id="nav-content" tabindex="0">
+            <ul>
+
+              <ng-container *ngIf="userLoggedIn; else loggedInUser">
+
+                <div class="custom-dropdown" style="float:left;">
+                  <img class="dropbtn" src="../../../../../assets/account.svg">
+                  <div class="custom-dropdown-content"  style="left:0;">
+                    <a (click)="logOut()" class="cursor-pointer">{{"header.LogOut" | translate}}</a>
+                  </div>
+                </div>
+              </ng-container>
+              <ng-template #loggedInUser>
+                <li (click)="signIn()">
+                  <span class="btn btn-sign btn-all">{{
+                    "header.login" | translate
+                  }}</span>
+                </li><br>
+                <li (click)="signUp()">
+                  <span class="btn btn-login btn-all">{{
+                    "header.SignUp" | translate
+                  }}</span>
+                </li>
+              </ng-template>
+              <br>
+              <li>
+                <a class="cursor-pointer" (click)="navigateToHome()">{{ "header.Home" | translate }}</a>
+              </li>
+              <li>
+                <a class="cursor-pointer" routerLink="/landing">{{ "header.AboutUs" | translate }}</a>
+              </li>
+
+              <li class="has-children ">
+                <a>{{ currentLanguage }} <i class="fas fa-angle-down"></i> </a>
+                <ul class="dropdown arrow-top">
+                  <li><a (click)="changeLanguage('en')">English</a></li>
+                  <li><a (click)="changeLanguage('fr')">French</a></li>
+                </ul>
+              </li>
+
+
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="cv-logo">
+        <a class="navbar-brand cursor-pointer" (click)="navigateToHome()"><span>Ce</span>evee</a>
+      </div>
+    </div>
+  </div>
+</div>

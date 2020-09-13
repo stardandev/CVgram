@@ -1,0 +1,354 @@
+
+@import '../../../../../assets/styles/custom-styles.scss';
+@import '../../../../../assets/styles/breakpoints.scss';
+
+
+.email-opreation{
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.email-heading{
+    position: relative;
+    width: 100%;
+    h3{
+        color: $black;
+    }
+}
+
+.email-section{
+    position: relative;
+    width: 100%;
+}
+
+ .email-head {
+    margin-left: 6%;
+    font-weight: 600;
+    color: #6d6d6d;
+}
+.title5 {
+    font-size: 16px;
+    line-height: 23px;
+    font-weight: 500;
+}
+ .email-head button {
+    margin-right: 5%;
+    border: 0;
+    background-color: transparent;
+    float: right;
+    font-weight: 400;
+    color: #440ccc;
+    box-shadow: none;
+    padding: 0;
+}
+
+.display-box .email-display-box{
+    max-width: 658px;
+}
+.display-box{
+    position: relative;
+    // max-width: 608px;
+    margin: 0 auto;
+}
+
+.display-box::before {
+    content: "";
+    z-index: -1;
+    margin-bottom: 50px;
+    position: absolute;
+    left: 0px;
+    top: 0;
+    width: 100%;
+    padding-top: 100%;
+    background-color: $secondary;
+    border-radius: 50%;
+    box-shadow: 0 10px 60px rgba(0,0,0,.2);
+    z-index: -1;
+    @include media(">phone", "<=tablet") {
+        display: none;
+      }
+}
+.display-box>div:first-child {
+    // width: 100%;
+    margin: 0 auto;
+    display: flex;
+    // flex: 1 1;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,.15);
+    // min-height: 720px;
+    border-radius: 2px;
+    position: relative;
+    z-index: 0;
+    -webkit-transition: min-height .3s ease-in-out;
+    transition: min-height .3s ease-in-out;
+    @include media(">phone", "<=tablet") {
+      }
+}
+.email-left-box{
+    @include media(">phone", "<=tablet") {
+        margin-bottom:20px ;
+      }
+    h6{
+        color: $black;
+        margin-bottom: 20px;
+    }
+}
+
+.text-area-cv,.input-cv,.redaio-cv{
+    margin: 5px 0;
+}
+.btn-copy{
+border-radius: 2px;
+background-color: $secondary;
+color: #fff;
+min-width: 160px;
+font-size: 14px;
+padding: 12px 8px;
+}
+.cv-margin{
+    margin-top: 50px;
+}
+
+.share-things{
+    background-color: #f8f8f8;
+    padding: 5px 15px;
+    display: inline-block;
+    max-height: 50px;
+    margin: 0 auto;
+    border-radius: 1.2em;
+    position: absolute;
+    right: 5%;
+    top: 0;
+    z-index: 9;
+}
+
+.icon-copy {
+    display: inline-block;
+    cursor: pointer;
+    i{
+        color: gray;
+        width: 40px;
+    height: auto;
+
+    }
+}
+
+.dis-box{
+    position: relative;
+    width: 100%;
+}
+
+// .page-a4{
+//     max-height: 577px;
+//     max-width: 407.98px;
+// }
+
+.bottom-cv-btn{
+    position: absolute;
+    left: 0;
+    bottom: 3%;
+    display: inline-block;
+    padding: 0 30px;
+}
+.top-cv-con{
+    width: 100%;
+    height: 100vh;
+    border: 2px solid #ddd;
+    padding: 12px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.left-btn{
+    background: transparent;
+    color: $black;
+    border: 1px solid $black;
+    padding: 5px;
+}
+.left-btn:not(:first-child){
+    margin-left: 20px;
+}
+.top-cv {
+    // border: 1px solid #ddd;
+    padding: 12px;
+    height: 100%;
+    // min-height: 100vh;
+    width: 100%;
+}
+a.btn.btn-cv {
+    border: 1px solid #000;
+    font-size: 14px;
+    @include media(">phone", "<=tablet") {
+        margin-bottom: 10px;
+        margin-left: 10px;
+      }
+}
+.bot-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    // margin-top: 20px;
+    @include media(">phone", "<=tablet") {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+}
+
+.btn-cv{
+    margin-right: 10px;
+}
+.btn-cv:hover{
+    box-shadow: 0px 3px 4px rgba(0,0,0,.2);
+}
+
+.input-cv{
+    .form-s{
+        @include media(">phone", "<=tablet") {
+            width: 100% !important;
+          }
+    }
+}
+.heading-email{
+    position: relative;
+    h4{
+        text-align: center;
+        // font-family: cursive;
+        margin-bottom: 40px;
+        position: relative;
+            &:after{
+                content: "";
+                position: absolute;
+                left: 38%;
+                top: 23px;
+                width: 24%;
+                height: 19%;
+                z-index: -1;
+                background: #005C97;
+            }
+    }
+}
+
+
+.btn-container {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.input-cv { 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+.cv-first-layout{
+    width: 100%;
+    height: 100%;
+    .cv-top-letter{
+
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: auto;
+        min-height: 230px;
+    }
+    .right-top {
+        align-self: flex-end;
+    }
+
+    .cv-bot-letter {
+        display: flex;
+        justify-content: flex-end;
+        width: 75%;
+        align-items: flex-end;
+    }
+}
+
+.cv-second-layout{
+    .cv-top-letter {
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+    
+    .right-top {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .rt-top {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .cv-bot-letter {
+        margin-top: 30px;
+    
+}
+
+.left-top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+}
+
+.re-sir,.de-sir{
+    margin-bottom: 10px;
+    display: block;
+}
+
+.cover-con {
+    word-break: break-word;
+}
+
+.cv-third-layout{
+    .cv-top-letter {
+        display: flex;
+        flex-direction: column-reverse;
+        /* justify-content: space-between; */
+        align-items: flex-start;
+        width: 100%;
+    }
+    .left-top {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-end;
+        width: 100%;
+    }
+    .rt-bot {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+    }
+    .sign{
+        display: flex;
+    justify-content: flex-end;
+    width: 80%;
+    }
+}
+
+.cv-best{
+    span{
+        font-size: 14px;
+    }
+}
+
+.page-a4{
+    width: 21cm;
+    height: 29.7cm;
+}

@@ -1,0 +1,46 @@
+<div class="language-form">
+    <div class="addFormHeading"><span>{{operationType}} Language</span>
+    </div>
+    <div class="language-form-box" [formGroup]="languageForm">
+        <mat-form-field style="width: 80%;">
+            <input formControlName="name" matInput placeholder="Language">
+        </mat-form-field>
+        <br>
+        <mat-form-field style="width: 80%;">
+            <input formControlName="description" matInput
+                placeholder="Comments..">
+        </mat-form-field>
+        <br>  
+        <mat-form-field style="width: 80%;">
+            <mat-select formControlName="writingSkills"
+                placeholder="Read/Write">
+                <mat-option value="1">Basic</mat-option>
+                <mat-option value="2">Intermediate</mat-option>
+                <mat-option value="3">Advanced</mat-option>
+                <mat-option value="4">Native or Bilingual</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field style="width: 80%;">
+            <mat-select formControlName="speakingSkills"
+                placeholder="Speaking Level">
+                <mat-option value="1">Basic</mat-option>
+                <mat-option value="2">Intermediate</mat-option>
+                <mat-option value="3">Advanced</mat-option>
+                <mat-option value="4">Native or Bilingual</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-checkbox formControlName="showDetails" color="primary">
+            {{'global.showDetails' | translate}}</mat-checkbox>
+        <input type="hidden" formControlName="id"/>
+    </div>
+    <div class="lan-btn"> 
+        <button class="btn-all btn-save" [disabled]="languageForm.invalid" (click)="saveLanguage()">
+            Save
+        </button>
+        <a (click)="closeForm()" class="btn-all btn-save">
+            Cancel
+        </a>
+    </div>
+</div> 

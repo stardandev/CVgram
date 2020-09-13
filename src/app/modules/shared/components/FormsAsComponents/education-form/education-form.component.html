@@ -1,0 +1,73 @@
+
+
+
+<div class="language-form">
+    <div class="addFormHeading"><span>{{operationType}} Education</span>
+    </div>
+    <div class="language-form-box" [formGroup]="educationForm">
+        
+        <div class="two-fields-flex">
+            <mat-form-field>
+                <input formControlName="schoolName" matInput placeholder="schoolName">
+            </mat-form-field>
+            <!-- <mat-form-field>
+                <input formControlName="schoolName2" matInput placeholder="schoolName2">
+            </mat-form-field> -->
+        </div>
+        <div class="two-fields-flex">
+            <mat-form-field>
+                <input formControlName="studiesName" matInput placeholder="Study Program">
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="degree" matInput placeholder="Degree">
+            </mat-form-field>
+        </div>
+        
+        <div class="two-fields-flex"> 
+            <ng-container *ngIf="dayOfMonthEdu.checked">
+                <app-datemonthyear-picker class="half_width" [parentFormGroup]="educationHistoryEntry"
+                    [controlType]="'startedAt'"></app-datemonthyear-picker>
+                <ng-container *ngIf="!present.checked">
+                    <app-datemonthyear-picker class="half_width" [parentFormGroup]="educationHistoryEntry"
+                        [controlType]="'endedAt'"></app-datemonthyear-picker>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="!dayOfMonthEdu.checked">
+                <app-month-year-picker class="half_width" [parentFormGroup]="educationHistoryEntry"
+                    [controlType]="'startedAt'"></app-month-year-picker>
+                <ng-container *ngIf="!present.checked">
+                    <app-month-year-picker class="half_width" [parentFormGroup]="educationHistoryEntry"
+                        [controlType]="'endedAt'"></app-month-year-picker>
+                </ng-container>
+            </ng-container>
+        </div>
+ 
+      
+        <div class="emp-state">
+            <mat-checkbox color="primary"
+                (change)="enableMoment(educationHistoryEntry, dayOfMonthEdu)" #dayOfMonthEdu>
+                {{'global.toggleDatePicker' | translate}}</mat-checkbox>
+            <mat-checkbox color="primary" formControlName="present" #present>{{'global.present' | translate}}
+            </mat-checkbox>
+        </div>
+        <mat-form-field style="width: 45%;">
+            <input formControlName="city" matInput placeholder="City">
+        </mat-form-field>
+        <mat-form-field style="width: 45%;margin-left: 15px;">
+            <input formControlName="country" matInput placeholder="Country">
+        </mat-form-field>
+        <br>
+        <quill-editor class="editor-with-zero-height"
+            placeholder="Introduce yourself by pitching your skills & explaining how they can be of value to a company"
+            formControlName="description"></quill-editor> 
+        
+    </div>
+    <div class="lan-btn"> 
+        <button class="btn-all btn-save" (click)="saveEducation()">
+            Save
+        </button>
+        <a (click)="closeForm()" class="btn-all btn-save">
+            Cancel
+        </a>
+    </div>
+</div> 

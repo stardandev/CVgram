@@ -1,0 +1,75 @@
+<div class="dialog-padding">
+    <div mat-dialog-title class="dialog-title">
+        <h2>Upload Portrait</h2>
+        <div class="close-icon cursor-pointer"><span (click)="closeModal()">
+                <img src="../../../../../assets/resume/close.svg">
+            </span></div>
+    </div>
+    <p class="dialog-description">Try to eliminate any unnecessary background elements by cropping your portrait photo.
+        Generally feel free to choose a ratio that works best for you and your photo, but keep in mind that your
+        shoulders should still be visible.</p>
+    <mat-dialog-content>
+        <div class="bRcKbj">
+            <div class="image-cropper-container">
+                <image-cropper #imageCropper [imageChangedEvent]="imageChangedEvent" [imageBase64]="base64String"
+                    [maintainAspectRatio]="true" [containWithinAspectRatio]="containWithinAspectRatio"
+                    [aspectRatio]="resumePageBounds?.pictureDisplayStyle == 2 ? 1 / 1 : resumePageBounds?.pictureDisplayStyle == 3 ? 3/ 4 : 1 "
+                    [resizeToWidth]="256" [cropperMinWidth]="128" [onlyScaleDown]="true"
+                    [roundCropper]="resumePageBounds?.pictureDisplayStyle == 1" [canvasRotation]="canvasRotation"
+                    [transform]="transform" [alignImage]="'left'" [style.display]="showCropper ? null : 'none'"
+                    format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                    [cropper]="{width: 214,height: 214}" (cropperReady)="cropperReady($event)"
+                    (loadImageFailed)="loadImageFailed()"></image-cropper>
+            </div>
+            <img [src]="croppedImage" [class.circular]="resumePageBounds?.pictureDisplayStyle == 1"
+                [style.border]="croppedImage ? '1px solid black' : 'none'" />
+
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div class="footer-container">
+            <div class="pic-shapes">
+                <div class="pic-box-1 gap" (click)="updateResumePageBounds('pictureDisplayStyle', 3)"
+                    [ngClass]="{'pic-active': resumePageBounds?.pictureDisplayStyle == 3}"></div>
+                <div class="pic-box gap" (click)="updateResumePageBounds('pictureDisplayStyle', 2)"
+                    [ngClass]="{'pic-active': resumePageBounds?.pictureDisplayStyle == 2}"></div>
+                <div class="pic-round gap" (click)="updateResumePageBounds('pictureDisplayStyle', 1)"
+                    [ngClass]="{'pic-active': resumePageBounds?.pictureDisplayStyle == 1}"></div>
+            </div>
+            <div class="slider">
+                <div class="sc-gkFcWv kaYDnh">
+                    <div class="sc-dRaagA ijehmU">
+                        <span class="cursor-poniter" (click)="zoomOut()"><img
+                                src="../../../../../assets/resume/minus.svg"></span>
+                        <span>Zoom</span>
+                        <span class="cursor-poniter" (click)="zoomIn()"><img
+                                src="../../../../../assets/resume/plus.svg"></span>
+                    </div>
+                    <div class="sc-hUfwpO jCGBgi"><button (click)="rotateLeft()" type="button"
+                            class="sc-kPVwWT sc-imABML eDlYBf"><svg class="jss10" focusable="false" viewBox="0 0 24 24"
+                                aria-hidden="true" role="presentation">
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path
+                                    d="M7.11 8.53L5.7 7.11C4.8 8.27 4.24 9.61 4.07 11h2.02c.14-.87.49-1.72 1.02-2.47zM6.09 13H4.07c.17 1.39.72 2.73 1.62 3.89l1.41-1.42c-.52-.75-.87-1.59-1.01-2.47zm1.01 5.32c1.16.9 2.51 1.44 3.9 1.61V17.9c-.87-.15-1.71-.49-2.46-1.03L7.1 18.32zM13 4.07V1L8.45 5.55 13 10V6.09c2.84.48 5 2.94 5 5.91s-2.16 5.43-5 5.91v2.02c3.95-.49 7-3.85 7-7.93s-3.05-7.44-7-7.93z">
+                                </path>
+                            </svg></button><button (click)="rotateRight()" type="button"
+                            class="sc-kPVwWT sc-imABML eDlYBf"><svg class="jss10" focusable="false" viewBox="0 0 24 24"
+                                aria-hidden="true" role="presentation">
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path
+                                    d="M15.55 5.55L11 1v3.07C7.06 4.56 4 7.92 4 12s3.05 7.44 7 7.93v-2.02c-2.84-.48-5-2.94-5-5.91s2.16-5.43 5-5.91V10l4.55-4.45zM19.93 11c-.17-1.39-.72-2.73-1.62-3.89l-1.42 1.42c.54.75.88 1.6 1.02 2.47h2.02zM13 17.9v2.02c1.39-.17 2.74-.71 3.9-1.61l-1.44-1.44c-.75.54-1.59.89-2.46 1.03zm3.89-2.42l1.42 1.41c.9-1.16 1.45-2.5 1.62-3.89h-2.02c-.14.87-.48 1.72-1.02 2.48z">
+                                </path>
+                            </svg></button></div>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-sign btn-all cursor-pointer" [disabled]="uploadingPicture" (click)="saveImage()">{{uploadingPicture ? 'Please Wait....' : 'Save'}}</button>
+                <div class="upload-btn-wrapper" cdkFocusInitial>
+                    <button class="btn pic-btn">{{resumePageBondsCopy.image ? 'Replace Photo' : 'Add Photo'}}</button>
+                    <input type="file" (change)="fileChangeEvent($event)" name="myfile" />
+                </div>
+            </div>
+        </div>
+    </mat-dialog-actions>
+
+</div>

@@ -1,0 +1,540 @@
+<div class="email-opreation">
+
+	<div class="email-section">
+
+		<div class="row">
+			<div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+				<div class="email-left-box">
+					<div class="row btn-container">
+						<div [formGroup]="userContent">
+							<mat-form-field appearance="outline">
+								<mat-label>{{'dashboard.resume' | translate }} {{'global.name' | translate}}</mat-label>
+								<input matInput placeholder="Name" formControlName="cvName">
+							</mat-form-field>
+						</div>
+						<div>
+							<a class="btn btn-cv" (click)="navigateToDesignModule()">
+								Design Template
+							</a>
+						</div>
+					</div>
+					<div class="row">
+						<mat-accordion hideToggle="true" class="full_width">
+							<div class="col-12">
+								<mat-expansion-panel disabled="true">
+									<mat-expansion-panel-header>
+										<mat-panel-title class="pro-span">
+											{{'resumeOperations.profileCompleteness' | translate}}</mat-panel-title>
+										<mat-panel-description>
+											<div class="progress-container">
+												<mat-progress-bar mode="determinate" [value]="profileCompletenessPercentage"></mat-progress-bar>
+												<span class="progress-percentage">{{profileCompletenessPercentage}}%</span>
+											</div>
+										</mat-panel-description>
+									</mat-expansion-panel-header>
+								</mat-expansion-panel>
+							</div>
+						</mat-accordion>
+						<mat-accordion>
+							<div class="formContainer" [formGroup]="userContent">
+								<div class="col-12 per-det" formGroupName="personalDetails">
+									<mat-expansion-panel>
+										<mat-expansion-panel-header (keydown.Space)="$event.stopImmediatePropagation();">
+											<mat-panel-title>{{'resumeOperations.personalDetails' | translate}}
+											</mat-panel-title>
+										</mat-expansion-panel-header>
+
+										<div class="container upload-container">
+											<div class="sc-FAiZp hyBRzQ" (click)="openPictureEditor()">
+												<div class="sc-dHaUqb"
+													[class.honDBV]="!resumePageBondsCopy.enablePicture || !resumePageBondsCopy.image">
+
+													<ng-container *ngIf="!resumePageBondsCopy.image">
+														<svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet">
+															<title>{{resumePageBondsCopy.image ? 'Edit' : 'Add'}}
+																picture</title>
+															<path
+																d="M32,8H24.7L23.64,5.28A2,2,0,0,0,21.78,4H14.22a2,2,0,0,0-1.87,1.28L11.3,8H4a2,2,0,0,0-2,2V30a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V10A2,2,0,0,0,32,8ZM6.17,13.63a.8.8,0,0,1,0-1.6h2.4a.8.8,0,0,1,0,1.6ZM18,28a9,9,0,1,1,9-9A9,9,0,0,1,18,28Z">
+															</path>
+															<path
+																d="M11.11,19.06a7.07,7.07,0,0,0,4.11,6.41l1.09-1.74a5,5,0,1,1,5.22-8.39l1.09-1.76a7.06,7.06,0,0,0-11.51,5.48Z">
+															</path>
+															<rect x="0" y="0" width="36" height="36" fill-opacity="0">
+															</rect>
+														</svg>
+													</ng-container>
+
+													<div *ngIf="resumePageBondsCopy.enablePicture && resumePageBondsCopy.image"
+														class="right-side-img"
+														[ngClass]="{'img-circle': resumePageBondsCopy.pictureDisplayStyle == 1, 'img-rect': resumePageBondsCopy.pictureDisplayStyle == 3}">
+														<img [src]="resumePageBondsCopy.image ? resumePageBondsCopy.image : ''" alt="">
+													</div>
+
+
+
+												</div><button type="button" class="sc-kPVwWT hxnwux">
+													<div class="sc-kfGgVZ bIfYee"><svg class="jss19" focusable="false" viewBox="0 0 24 24"
+															aria-hidden="true" role="presentation">
+															<path
+																d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z">
+															</path>
+															<path fill="none" d="M0 0h24v24H0z"></path>
+														</svg></div>{{resumePageBondsCopy.image ? 'Edit' : 'Add'}} Photo
+												</button>
+											</div>
+											<button *ngIf="resumePageBondsCopy.image" (click)="deleteImage()" type="button"
+												class="sc-kPVwWT bKKKng">
+												<div class="sc-kfGgVZ bIfYee"><svg class="jss19" focusable="false" viewBox="0 0 24 24"
+														aria-hidden="true" role="presentation">
+														<path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z">
+														</path>
+														<path fill="none" d="M0 0h24v24H0z"></path>
+													</svg></div>Delete Photo
+											</button>
+										</div>
+										<br>
+										<div>
+											<mat-checkbox color="primary" [ngModelOptions]="{standalone: true}"
+												[(ngModel)]="resumePageBondsCopy.enableTitlePrefix" #enableTitlePrefix
+												(change)="updateResumePageBounds('enableTitlePrefix', resumePageBondsCopy.enableTitlePrefix)">
+												Include Name Prefix
+											</mat-checkbox>
+										</div>
+										<mat-form-field style="width:20%;" class="form-s" *ngIf="resumePageBondsCopy.enableTitlePrefix">
+											<mat-select formControlName="namePrefix">
+												<mat-option value="Mr">Mr.</mat-option>
+												<mat-option value="Mrs">Mrs.</mat-option>
+												<mat-option value="Ms">Ms.</mat-option>
+												<mat-option value="Miss">Miss</mat-option>
+											</mat-select>
+										</mat-form-field>
+										<mat-form-field style="width:22%;margin-left: 10px;" class="form-ss">
+											<mat-label>First Name</mat-label>
+											<input formControlName="firstName" matInput placeholder="First Name">
+										</mat-form-field>
+										<mat-form-field style="width:22%;margin-left: 10px;" class="form-sss">
+											<mat-label>Middle Name</mat-label>
+											<input formControlName="middleName" matInput placeholder="Middle Name">
+										</mat-form-field>
+										<mat-form-field style="width:22%;margin-left: 10px;" class="form-ssss">
+											<mat-label>Last Name</mat-label>
+											<input formControlName="lastName" matInput placeholder="Last name">
+										</mat-form-field>
+										<br>
+										<mat-form-field style="width:50%;">
+											<mat-label>Address 1 (Optional)</mat-label>
+											<input formControlName="addressLineOne" matInput placeholder="Address 1">
+										</mat-form-field>
+										<br>
+										<mat-form-field style="width:50%;">
+											<mat-label>Address 2 (Optional)</mat-label>
+											<input formControlName="addressLineTwo" matInput placeholder="Address 2">
+										</mat-form-field>
+										<br>
+										<mat-form-field style="width:48%;">
+											<mat-label>City (Optional)</mat-label>
+											<input formControlName="city" matInput placeholder="City">
+										</mat-form-field>
+										<mat-form-field style="width:45%;margin-left: 10px;">
+											<mat-label>Postal Code (Optional)</mat-label>
+											<input formControlName="postalCode" matInput placeholder="Postal Code">
+										</mat-form-field>
+										<mat-form-field style="width:50%">
+											<mat-label>Country (Optional)</mat-label>
+											<input formControlName="country" matInput placeholder="Country">
+										</mat-form-field>
+										<br>
+										<mat-form-field style="width:48%">
+											<mat-label>Phone (Optional)</mat-label>
+											<input formControlName="phone" matInput placeholder="Phone">
+										</mat-form-field>
+										<mat-form-field style="width:45%;margin-left: 10px;">
+											<mat-label>Email (Optional)</mat-label>
+											<input formControlName="email" matInput placeholder="Email">
+										</mat-form-field>
+										<div formArrayName="customSections">
+											<ng-container *ngFor="let  control of personalDetailsControlArray.controls;let i=index"
+												[formGroupName]="i">
+												<mat-form-field style="width:45%;">
+													<mat-label>
+														{{currentLanguage == 'fr' ? control.controls.frValue.value : control.controls.enValue.value}}
+													</mat-label>
+													<input formControlName="value" matInput
+														placeholder="{{currentLanguage == 'fr' ? control.controls.frValue.value : control.controls.enValue.value}}">
+												</mat-form-field>
+												<br>
+											</ng-container>
+										</div>
+										<div class="personal-details-custom-section" *ngIf="personalDetailsCustomSections.length > 0"> <span
+												class="title">{{'global.clicktoadd' | translate}}</span>
+											<mat-chip-list>
+												<ng-container *ngFor="let item of personalDetailsCustomSections;let i = index">
+													<mat-chip color="primary" class="cursor-pointer" (click)="addCustomPersonalDetails(item, i)">
+														<span class="chips-details"><i class="fas fa-plus-circle"></i>
+															{{currentLanguage == 'fr' ? item.frValue : item.enValue}}
+														</span>
+													</mat-chip>
+												</ng-container>
+											</mat-chip-list>
+										</div>
+									</mat-expansion-panel>
+								</div>
+								<div class="col-12">
+									<mat-expansion-panel formGroupName="profileSummary">
+										<mat-expansion-panel-header (keydown.Space)="$event.stopImmediatePropagation();">
+											<mat-panel-title>
+												<ejs-inplaceeditor id="element" mode="Inline"
+													[value]="currentLanguage == 'fr' ? userContentRepresentation?.profileSummary.frDisplayName :  userContentRepresentation?.profileSummary.displayName"
+													(actionSuccess)='actionSuccessEdit($event,"profileSummary")' [model]="elementModel">
+												</ejs-inplaceeditor>
+											</mat-panel-title>
+										</mat-expansion-panel-header>
+										<quill-editor class="editor-with-zero-height"
+											placeholder="Introduce yourself by pitching your skills & explaining how they can be of value to a company"
+											formControlName="content"></quill-editor>
+									</mat-expansion-panel>
+								</div>
+								<div class="col-12">
+									<mat-expansion-panel>
+										<mat-expansion-panel-header (keydown.Space)="$event.stopImmediatePropagation();">
+											<mat-panel-title>
+												<ejs-inplaceeditor id="element" mode="Inline"
+													[value]="currentLanguage == 'fr' ? userContentRepresentation?.professionalExperience.frDisplayName : userContentRepresentation?.professionalExperience.displayName"
+													(actionSuccess)='actionSuccessEdit($event,"professionalExperience")' [model]="elementModel">
+												</ejs-inplaceeditor>
+											</mat-panel-title>
+										</mat-expansion-panel-header>
+
+										<!--Employment Data -->
+										<div class="data-container"
+											*ngIf="userContentRepresentation?.professionalExperience.entries.length > 0">
+
+											<div class="example-list">
+												<div class="example-box"
+													*ngFor="let item of userContentRepresentation?.professionalExperience.entries">
+													<div>
+														<span class="section-title caAxaq">{{item.employerName}} <ng-container *ngIf="item.employerName && item.jobTitle">,</ng-container>
+														
+															<span>{{item.jobTitle}}</span></span>
+														<br>
+														<p class="section-details">
+															{{item.startedAt | date}} -
+															<ng-container *ngIf="!item.present;else presetnEdec">{{item.endedAt | date}}
+															</ng-container>
+															<ng-template #presetnEdec>Present</ng-template>
+															<ng-container *ngIf="item.city || item.country">|
+															</ng-container>
+															{{item.city}}
+															<ng-container *ngIf="item.city && item.country">,
+															</ng-container>
+															{{item.country}}
+														</p>
+													</div>
+													<div class="actions">
+														<span matTooltip="Edit" matTooltipPosition="above" class="cursor-pointer"
+															(click)="editTableRow('employment',item)">
+															<img src="../../../../../assets/resume/edit.svg" class="table-actions">
+														</span>
+														<span matTooltip="Delete" (click)="deleteTableRow('employment',item)"
+															matTooltipPosition="above" class="cursor-pointer" style="margin-left: 10px;">
+															<img src="../../../../../assets/resume/rubbish.svg" class="table-actions">
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--  Employment Form -->
+
+										<app-employment-form *ngIf="showEmploymentForm" [employmentForm]="professionalExperienceEntry"
+											[professionalExperienceEntry]="professionalExperienceEntry" [operationType]="'Add New'"
+											(saveData)="addEmployment('new')" (close)="closeEmploymentForm()"
+											(enableMomentFormat)="enableMoment($event)">
+										</app-employment-form>
+
+										<app-employment-form *ngIf="showEmploymentEditForm" [employmentForm]="professionalExperienceEntry"
+											[professionalExperienceEntry]="professionalExperienceEntry" [operationType]="'Edit'"
+											(saveData)="addEmployment('edit')" (close)="closeEmploymentEditForm()"
+											(enableMomentFormat)="enableMoment($event)"></app-employment-form>
+
+										<button *ngIf="!showEmploymentForm && !showEmploymentEditForm" width="auto" class="sc-kPVwWT gdKvmp"
+											(click)="showEmploymentForm = true">
+											<div class="sc-kfGgVZ bIfYee">
+												<svg class="jss10" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+													<path fill="none" d="M0 0h24v24H0z"></path>
+													<path
+														d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z">
+													</path>
+												</svg>
+											</div>
+											Employment
+										</button>
+
+
+									</mat-expansion-panel>
+								</div>
+								<div class="col-12" [formGroup]="educationHistoryEntry">
+									<mat-expansion-panel>
+										<mat-expansion-panel-header (keydown.Space)="$event.stopImmediatePropagation();">
+											<mat-panel-title>
+												<ejs-inplaceeditor id="element" mode="Inline"
+													[value]="currentLanguage == 'fr' ? userContentRepresentation?.education.frDisplayName : userContentRepresentation?.education.displayName"
+													(actionSuccess)='actionSuccessEdit($event,"education")' [model]="elementModel">
+												</ejs-inplaceeditor>
+											</mat-panel-title>
+										</mat-expansion-panel-header>
+
+										<!--Education Data-->
+										<div class="data-container" *ngIf="userContentRepresentation?.education.entries.length > 0">
+
+											<div class="example-list">
+												<div class="example-box" *ngFor="let item of userContentRepresentation?.education.entries">
+													<div>
+														<span class="section-title caAxaq">{{item.schoolName}},
+															<span>{{item.degree}}</span></span>
+														<br>
+														<p class="section-details">
+															{{item.startedAt | date}} -
+															<ng-container *ngIf="!item.present;else presetnEdec">{{item.endedAt | date}}
+															</ng-container>
+															<ng-template #presetnEdec>Present</ng-template>
+															<ng-container *ngIf="item.city || item.country">|</ng-container>
+															{{item.city}} <ng-container *ngIf="item.city && item.country">,</ng-container>
+															{{item.country}}
+														</p>
+													</div>
+													<div class="actions">
+														<span matTooltip="Edit" matTooltipPosition="above" class="cursor-pointer"
+															(click)="editTableRow('education',item)">
+															<img src="../../../../../assets/resume/edit.svg" class="table-actions">
+														</span>
+														<span matTooltip="Delete" (click)="deleteTableRow('education',item)"
+															matTooltipPosition="above" class="cursor-pointer" style="margin-left: 10px;">
+															<img src="../../../../../assets/resume/rubbish.svg" class="table-actions">
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--Education Form-->
+
+										<app-education-form *ngIf="showEducationForm" [educationForm]="educationHistoryEntry"
+											[educationHistoryEntry]="educationHistoryEntry" [operationType]="'Add new'"
+											(saveData)="addEducation('new')" (close)="closeEducationForm()"
+											(enableMomentFormat)="enableMoment($event)"></app-education-form>
+
+
+										<app-education-form *ngIf="showEducationEditForm" [educationForm]="educationHistoryEntry"
+											[educationHistoryEntry]="educationHistoryEntry" [operationType]="'Edit'"
+											(saveData)="addEducation('edit')" (close)="closeEducationEditForm()"
+											(enableMomentFormat)="enableMoment($event)"></app-education-form>
+
+										<button *ngIf="!showEducationForm && !showEducationEditForm" width="auto" class="sc-kPVwWT gdKvmp"
+											(click)="showEducationForm = true">
+											<div class="sc-kfGgVZ bIfYee">
+												<svg class="jss10" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+													<path fill="none" d="M0 0h24v24H0z"></path>
+													<path
+														d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z">
+													</path>
+												</svg>
+											</div>
+											Education
+										</button>
+									</mat-expansion-panel>
+								</div>
+								<div class="col-12">
+									<mat-expansion-panel>
+										<mat-expansion-panel-header (keydown.Space)="$event.stopImmediatePropagation();">
+											<mat-panel-title>
+												<ejs-inplaceeditor id="element" mode="Inline"
+													[value]="currentLanguage == 'fr' ? userContentRepresentation?.language.frDisplayName : userContentRepresentation?.language.displayName"
+													(actionSuccess)='actionSuccessEdit($event,"language")' [model]="elementModel">
+												</ejs-inplaceeditor>
+											</mat-panel-title>
+										</mat-expansion-panel-header>
+										<table mat-table *ngIf="userContentRepresentation?.language.entries.length > 0"
+											[dataSource]="userContentRepresentation?.language.entries" class="mat-elevation-z8 full_width">
+											<ng-container matColumnDef="name">
+												<th mat-header-cell *matHeaderCellDef>Language</th>
+												<td mat-cell *matCellDef="let element">{{element.name}}</td>
+											</ng-container>
+											<ng-container matColumnDef="showDetails">
+												<th mat-header-cell *matHeaderCellDef>Show Details</th>
+												<td mat-cell *matCellDef="let element">{{element.showDetails}}</td>
+											</ng-container>
+											<ng-container matColumnDef="Actions">
+												<th mat-header-cell *matHeaderCellDef>Actions</th>
+												<td mat-cell *matCellDef="let element">
+													<span matTooltip="Edit Language" matTooltipPosition="above" class="cursor-pointer"
+														(click)="editTableRow('language',element)">
+														<img src="../../../../../assets/resume/edit.svg" class="table-actions">
+													</span>
+													<span matTooltip="Delete Language" matTooltipPosition="above" class="cursor-pointer"
+														style="margin-left: 10px;" (click)="deleteTableRow('language',element)">
+														<img src="../../../../../assets/resume/rubbish.svg" class="table-actions">
+													</span>
+												</td>
+											</ng-container>
+											<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+											<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+										</table>
+
+
+										<!-- Language Form-->
+
+										<app-language *ngIf="showLanguageForm" [languageForm]="languageForm"
+											[operationType]="currentLanguage == 'fr' ? 'Ajouter un nouveau' : 'Add new'"
+											(saveData)="addLanguage('new')" (close)="closeLanguageForm()">
+										</app-language>
+
+										<app-language *ngIf="showLanguageEditForm" [languageForm]="languageForm"
+											[operationType]="currentLanguage == 'fr' ? 'Éditer' : 'Edit'" (saveData)="addLanguage('edit')"
+											(close)="closeLanguageEditForm()">
+										</app-language>
+
+										<button *ngIf="!showLanguageEditForm && !showLanguageForm" width="auto" class="sc-kPVwWT gdKvmp"
+											(click)="showLanguageForm = true">
+											<div class="sc-kfGgVZ bIfYee">
+												<svg class="jss10" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+													<path fill="none" d="M0 0h24v24H0z"></path>
+													<path
+														d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z">
+													</path>
+												</svg>
+											</div>
+											Language
+										</button>
+									</mat-expansion-panel>
+								</div>
+								<div class="col-12">
+									<mat-expansion-panel>
+										<mat-expansion-panel-header (keydown.Space)="$event.stopImmediatePropagation();">
+											<mat-panel-title>
+												<ejs-inplaceeditor id="element" mode="Inline"
+													[value]="currentLanguage == 'fr' ? userContentRepresentation?.skills.frDisplayName : userContentRepresentation?.skills.displayName"
+													(actionSuccess)='actionSuccessEdit($event,"skills")' [model]="elementModel">
+												</ejs-inplaceeditor>
+											</mat-panel-title>
+										</mat-expansion-panel-header>
+										<table mat-table *ngIf="userContentRepresentation?.skills.entries.length > 0"
+											[dataSource]="userContentRepresentation?.skills.entries" class="mat-elevation-z8 full_width">
+											<ng-container matColumnDef="Skill">
+												<th mat-header-cell *matHeaderCellDef>Skill</th>
+												<td mat-cell *matCellDef="let element">{{element.name}}</td>
+											</ng-container>
+											<ng-container matColumnDef="showSkillLevel">
+												<th mat-header-cell *matHeaderCellDef>Show Skill Level</th>
+												<td mat-cell *matCellDef="let element">{{element.showSkillLevel}}</td>
+											</ng-container>
+											<ng-container matColumnDef="Actions">
+												<th mat-header-cell *matHeaderCellDef>Actions</th>
+												<td mat-cell *matCellDef="let element">
+													<span matTooltip="Edit Skill" matTooltipPosition="above" class="cursor-pointer"
+														(click)="editTableRow('name',element)">
+														<img src="../../../../../assets/resume/edit.svg" class="table-actions">
+													</span>
+													<span matTooltip="Delete Skill" matTooltipPosition="above" class="cursor-pointer"
+														style="margin-left: 10px;" (click)="deleteTableRow('name',element)">
+														<img src="../../../../../assets/resume/rubbish.svg" class="table-actions">
+													</span>
+												</td>
+											</ng-container>
+											<tr mat-header-row *matHeaderRowDef="skillsDisplayedColumns"></tr>
+											<tr mat-row *matRowDef="let row; columns: skillsDisplayedColumns;"></tr>
+										</table>
+
+										<!--Skill Forms-->
+										<app-skill *ngIf="showSkillForm" [skillForm]="skillForm"
+											[operationType]="currentLanguage == 'fr' ? 'Ajouter un nouveau' : 'Add new'"
+											(saveData)="addSkill('new')" (close)="closeSkillForm()"></app-skill>
+
+										<app-skill *ngIf="showSkillEditForm" [skillForm]="skillForm"
+											[operationType]="currentLanguage == 'fr' ? 'Éditer' : 'Edit'" (saveData)="addSkill('edit')"
+											(close)="closeSkillEditForm()"></app-skill>
+
+
+										<button *ngIf="!showSkillEditForm && !showSkillForm" width="auto" class="sc-kPVwWT gdKvmp"
+											(click)="showSkillForm = true">
+											<div class="sc-kfGgVZ bIfYee">
+												<svg class="jss10" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+													<path fill="none" d="M0 0h24v24H0z"></path>
+													<path
+														d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z">
+													</path>
+												</svg>
+											</div>
+											Skill
+										</button>
+									</mat-expansion-panel>
+								</div>
+								<ng-container *ngFor="let mainSection of userContentRepresentation.customSections;let i = index">
+									<div class="col-12">
+										<mat-expansion-panel>
+											<mat-expansion-panel-header (keydown.Space)="$event.stopImmediatePropagation();">
+												<mat-panel-title>
+													<ejs-inplaceeditor id="element" mode="Inline" [value]="mainSection.name"
+														(actionSuccess)='actionSuccess($event,mainSection)' [model]="elementModel">
+													</ejs-inplaceeditor>
+												</mat-panel-title>
+											</mat-expansion-panel-header>
+											<ng-container>
+												<div class="example-list" *ngFor="let section of mainSection.details;let counter = index">
+													<div class="example-box">
+														<div> <span class="section-title">{{section.title}}</span>
+															<br>
+															<p class="section-details">{{section.date}} |
+																{{section.city}}, {{section.country}}</p>
+														</div>
+														<div class="actions">
+															<span matTooltip="Edit" matTooltipPosition="above" class="cursor-pointer" (click)="editTableRow('customSection', {
+																	mainSection : mainSection,
+																	section : section,
+																	operation : 'update'
+																})">
+																<img src="../../../../../assets/resume/edit.svg" class="table-actions">
+															</span>
+															<span matTooltip="Delete" (click)="deleteTableRow('customSection',{
+																mainSection : mainSection,
+																section : section
+															})" matTooltipPosition="above" class="cursor-pointer" style="margin-left: 10px;">
+																<img src="../../../../../assets/resume/rubbish.svg" class="table-actions">
+															</span>
+														</div>
+													</div>
+												</div>
+
+												<button width="auto" class="sc-kPVwWT gdKvmp" (click)="addNewCustomSectionEntry({
+													mainSection : mainSection,
+													operation : 'new'
+													})">
+													<div class="sc-kfGgVZ bIfYee">
+														<svg class="jss10" focusable="false" viewBox="0 0 24 24" aria-hidden="true"
+															role="presentation">
+															<path fill="none" d="M0 0h24v24H0z"></path>
+															<path
+																d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z">
+															</path>
+														</svg>
+													</div>
+													{{mainSection.name}}
+												</button>
+											</ng-container>
+										</mat-expansion-panel>
+									</div>
+								</ng-container>
+							</div>
+						</mat-accordion>
+					</div>
+					<div class="custom-button"> <a (click)="addCustomSection()">
+							{{'resumeOperations.addCustomSection' | translate}}</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+				<app-resume-overview></app-resume-overview>
+			</div>
+		</div>
+	</div>
+</div>
